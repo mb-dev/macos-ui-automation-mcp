@@ -15,42 +15,68 @@ from macos_ui_automation.models.types import (
     WindowState,
 )
 
+# Test constants to avoid magic values
+SAMPLE_X = 100
+SAMPLE_Y = 200
+SMALL_X = 50
+SMALL_Y = 75
+TEST_X = 25
+TEST_Y = 30
+NEGATIVE_X = -10
+NEGATIVE_Y = -20
+FLOAT_X_RESULT = 10
+FLOAT_Y_RESULT = 20
+STANDARD_WIDTH = 800
+STANDARD_HEIGHT = 600
+SMALL_WIDTH = 400
+SMALL_HEIGHT = 300
+LARGE_DIMENSION = 999999
+BUTTON_WIDTH = 80
+BUTTON_HEIGHT = 30
+TEXT_FIELD_WIDTH = 200
+TEXT_FIELD_HEIGHT = 25
+WINDOW_ID = 123
+ANOTHER_WINDOW_ID = 456
+THIRD_WINDOW_ID = 789
+FORM_WINDOW_ID = 1001
+EXPECTED_CHILDREN_COUNT = 2
+
 
 class TestPosition:
     """Test Position model."""
 
     def test_valid_position(self):
         """Test creating valid position."""
-        pos = Position(x=100, y=200)
-        assert pos.x == 100
-        assert pos.y == 200
+        pos = Position(x=SAMPLE_X, y=SAMPLE_Y)
+        assert pos.x == SAMPLE_X
+        assert pos.y == SAMPLE_Y
 
     def test_position_serialization(self):
         """Test position serialization."""
-        pos = Position(x=50, y=75)
+        pos = Position(x=SMALL_X, y=SMALL_Y)
         data = pos.model_dump()
 
-        assert data == {"x": 50, "y": 75}
+        assert data == {"x": SMALL_X, "y": SMALL_Y}
 
     def test_position_from_dict(self):
         """Test creating position from dict."""
-        data = {"x": 25, "y": 30}
+        data = {"x": TEST_X, "y": TEST_Y}
         pos = Position(**data)
 
-        assert pos.x == 25
-        assert pos.y == 30
+        assert pos.x == TEST_X
+        assert pos.y == TEST_Y
 
     def test_negative_coordinates(self):
         """Test that negative coordinates are allowed."""
-        pos = Position(x=-10, y=-20)
-        assert pos.x == -10
-        assert pos.y == -20
+        pos = Position(x=NEGATIVE_X, y=NEGATIVE_Y)
+        assert pos.x == NEGATIVE_X
+        assert pos.y == NEGATIVE_Y
 
     def test_float_conversion(self):
         """Test that floats are converted to integers."""
         pos = Position(x=10.7, y=20.3)
-        assert pos.x == 10
-        assert pos.y == 20
+        assert pos.x == FLOAT_X_RESULT
+        assert pos.y == FLOAT_Y_RESULT
 
 
 class TestSize:
@@ -58,16 +84,16 @@ class TestSize:
 
     def test_valid_size(self):
         """Test creating valid size."""
-        size = Size(width=800, height=600)
-        assert size.width == 800
-        assert size.height == 600
+        size = Size(width=STANDARD_WIDTH, height=STANDARD_HEIGHT)
+        assert size.width == STANDARD_WIDTH
+        assert size.height == STANDARD_HEIGHT
 
     def test_size_serialization(self):
         """Test size serialization."""
-        size = Size(width=400, height=300)
+        size = Size(width=SMALL_WIDTH, height=SMALL_HEIGHT)
         data = size.model_dump()
 
-        assert data == {"width": 400, "height": 300}
+        assert data == {"width": SMALL_WIDTH, "height": SMALL_HEIGHT}
 
     def test_zero_dimensions(self):
         """Test that zero dimensions are allowed."""
@@ -77,9 +103,9 @@ class TestSize:
 
     def test_large_dimensions(self):
         """Test large dimensions."""
-        size = Size(width=999999, height=999999)
-        assert size.width == 999999
-        assert size.height == 999999
+        size = Size(width=LARGE_DIMENSION, height=LARGE_DIMENSION)
+        assert size.width == LARGE_DIMENSION
+        assert size.height == LARGE_DIMENSION
 
 
 class TestUIElement:
@@ -101,8 +127,8 @@ class TestUIElement:
             ax_identifier="submit-btn",
             enabled=True,
             focused=False,
-            position=Position(x=100, y=200),
-            size=Size(width=80, height=30),
+            position=Position(x=SAMPLE_X, y=SAMPLE_Y),
+            size=Size(width=BUTTON_WIDTH, height=BUTTON_HEIGHT),
             value="Click me",
             actions=["AXPress"],
             children_count=0,
@@ -111,8 +137,8 @@ class TestUIElement:
         assert element.title == "Submit"
         assert element.ax_identifier == "submit-btn"
         assert element.enabled is True
-        assert element.position.x == 100
-        assert element.size.width == 80
+        assert element.position.x == SAMPLE_X
+        assert element.size.width == BUTTON_WIDTH
         assert element.actions == ["AXPress"]
 
     def test_element_serialization(self):
@@ -121,16 +147,16 @@ class TestUIElement:
             role="AXTextField",
             element_type="textfield",
             title="Username",
-            position=Position(x=50, y=100),
-            size=Size(width=200, height=25),
+            position=Position(x=SMALL_X, y=100),
+            size=Size(width=TEXT_FIELD_WIDTH, height=TEXT_FIELD_HEIGHT),
         )
 
         data = element.model_dump()
 
         assert data["role"] == "AXTextField"
         assert data["title"] == "Username"
-        assert data["position"] == {"x": 50, "y": 100}
-        assert data["size"] == {"width": 200, "height": 25}
+        assert data["position"] == {"x": SMALL_X, "y": 100}
+        assert data["size"] == {"width": TEXT_FIELD_WIDTH, "height": TEXT_FIELD_HEIGHT}
 
     def test_missing_required_fields(self):
         """Test validation error for missing required fields."""
@@ -152,17 +178,17 @@ class TestWindowState:
 
     def test_minimal_window(self):
         """Test creating window with minimal fields."""
-        window = WindowState(title="Test Window", window_id=123)
+        window = WindowState(title="Test Window", window_id=WINDOW_ID)
         assert window.title == "Test Window"
-        assert window.window_id == 123
+        assert window.window_id == WINDOW_ID
 
     def test_full_window(self):
         """Test creating window with all fields."""
         window = WindowState(
             title="Main Window",
-            window_id=456,
-            position=Position(x=100, y=100),
-            size=Size(width=800, height=600),
+            window_id=ANOTHER_WINDOW_ID,
+            position=Position(x=SAMPLE_X, y=SAMPLE_X),
+            size=Size(width=STANDARD_WIDTH, height=STANDARD_HEIGHT),
             minimized=False,
             children=[],
         )
@@ -175,7 +201,7 @@ class TestWindowState:
         """Test window with UI elements."""
         element = UIElement(role="AXButton", element_type="button")
         window = WindowState(
-            title="Window with Button", window_id=789, children=[element]
+            title="Window with Button", window_id=THIRD_WINDOW_ID, children=[element]
         )
 
         assert len(window.children) == 1
@@ -223,24 +249,24 @@ class TestModelIntegration:
             role="AXButton",
             element_type="button",
             title="Submit",
-            position=Position(x=200, y=300),
-            size=Size(width=100, height=30),
+            position=Position(x=SAMPLE_Y, y=300),
+            size=Size(width=SAMPLE_X, height=BUTTON_HEIGHT),
             enabled=True,
         )
 
         text_field = UIElement(
             role="AXTextField",
             element_type="textfield",
-            position=Position(x=200, y=250),
-            size=Size(width=200, height=25),
+            position=Position(x=SAMPLE_Y, y=250),
+            size=Size(width=TEXT_FIELD_WIDTH, height=TEXT_FIELD_HEIGHT),
             value="Enter text here",
         )
 
         window = WindowState(
             title="Login Form",
-            window_id=1001,
-            position=Position(x=100, y=100),
-            size=Size(width=400, height=300),
+            window_id=FORM_WINDOW_ID,
+            position=Position(x=SAMPLE_X, y=SAMPLE_X),
+            size=Size(width=SMALL_WIDTH, height=SMALL_HEIGHT),
             children=[text_field, button],
         )
 
@@ -248,15 +274,15 @@ class TestModelIntegration:
         data = window.model_dump()
 
         assert data["title"] == "Login Form"
-        assert len(data["children"]) == 2
+        assert len(data["children"]) == EXPECTED_CHILDREN_COUNT
         assert data["children"][0]["role"] == "AXTextField"
         assert data["children"][1]["title"] == "Submit"
 
     def test_model_reconstruction(self):
         """Test reconstructing models from serialized data."""
         # Create original models
-        original_pos = Position(x=50, y=100)
-        original_size = Size(width=200, height=150)
+        original_pos = Position(x=SMALL_X, y=SAMPLE_X)
+        original_size = Size(width=TEXT_FIELD_WIDTH, height=150)
 
         # Serialize
         pos_data = original_pos.model_dump()

@@ -80,7 +80,43 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "PERF", "RUF"]
-ignore = ["S101", "T201", "PLR0913", "PLR0915", "COM812", "ISC001"]
+ignore = [
+    "S101",    # assert-used - pytest uses asserts
+    "T201",    # print-found - CLI tool needs print statements  
+    "PLR0913", # too-many-arguments - acceptable for factory functions
+    "PLR0915", # too-many-statements - acceptable for complex functions
+    "COM812",  # trailing-comma-missing - conflicts with formatter
+    "ISC001",  # implicit-string-concatenation - conflicts with formatter
+    "PLW0603", # global-statement - acceptable for singleton/factory patterns
+    "TRY300",  # try-consider-else - acceptable for readable try-return patterns
+    "ERA001",  # commented-out-code - acceptable for documentation/safety comments
+    "PLR0912", # too-many-branches - acceptable for CLI command handlers
+    "PLR0911", # too-many-returns - acceptable for complex control flow
+    "PLC0415", # import-outside-top-level - required for conditional PyObjC imports
+    "SLF001",  # private-member-access - required for PyObjC bridge implementation
+    "RUF001",  # ambiguous-unicode-character - acceptable for emoji in examples
+    "BLE001",  # blind-except - acceptable for top-level exception handlers
+    "EXE001",  # shebang-not-executable - example files don't need to be executable
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "FBT001", "FBT002", "FBT003",  # Boolean arguments acceptable in test fixtures
+    "PLR2004",  # Magic values acceptable in tests
+    "E501",     # Line length acceptable in test data
+]
+"examples/**/*.py" = [
+    "FBT001", "FBT002", "FBT003",  # Boolean arguments acceptable in examples
+    "PLR2004",  # Magic values acceptable in examples  
+    "E501",     # Line length acceptable in example code
+]
+"src/macos_ui_automation/core/*.py" = [
+    "FBT001", "FBT002",  # Boolean arguments acceptable in core API functions
+    "E501",     # Line length acceptable for complex conditions
+]
+"src/macos_ui_automation/selectors/*.py" = [
+    "E501",     # Line length acceptable for JSONPath expressions
+]
 
 [tool.ruff.format]
 quote-style = "double"

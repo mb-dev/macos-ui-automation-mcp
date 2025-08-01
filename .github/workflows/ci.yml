@@ -1,0 +1,160 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test on Python ${{ matrix.python-version }}
+    runs-on: macos-latest  # Use macOS since this is a macOS-specific tool
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+      fail-fast: false
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+        cache-dependency-glob: "uv.lock"
+
+    - name: Set up Python ${{ matrix.python-version }}
+      run: uv python install ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: uv sync --locked --all-extras --dev
+
+    - name: Run linting (ruff check)
+      run: uv run ruff check src/ tests/ mcp_server_wrapper.py --output-format=github
+
+    - name: Run formatting check (ruff format)
+      run: uv run ruff format --diff src/ tests/ mcp_server_wrapper.py
+
+    - name: Create junit directory
+      run: mkdir -p junit
+
+    - name: Run tests with coverage
+      run: |
+        uv run python -m pytest tests/ \
+          --verbose \
+          --cov=src/macos_ui_automation \
+          --cov-report=xml \
+          --cov-report=html \
+          --cov-fail-under=58 \
+          --junitxml=junit/test-results.xml
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v4
+      if: matrix.python-version == '3.12'  # Only upload once
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: false
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-${{ matrix.python-version }}
+        path: |
+          junit/test-results.xml
+          htmlcov/
+
+  quality-check:
+    name: Code Quality Check
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Install dependencies
+      run: uv sync --locked --dev
+
+    - name: Run quality check script
+      run: ./check-quality.sh
+
+  mcp-server-test:
+    name: MCP Server Integration Test
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Install dependencies
+      run: uv sync --locked --dev
+
+    - name: Test MCP server startup
+      run: |
+        # Test that MCP server can start and respond
+        timeout 10s uv run macos-ui-automation-mcp --help || true
+        echo "MCP server startup test completed"
+
+    - name: Test CLI functionality
+      run: |
+        # Test basic CLI functionality
+        uv run python -c "
+        from macos_ui_automation.interfaces.mcp_server import list_running_applications
+        apps = list_running_applications()
+        print(f'Found {len(apps)} applications in test mode')
+        assert len(apps) > 0, 'Should find test applications'
+        "
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+
+    - name: Set up Python
+      run: uv python install 3.12
+
+    - name: Install dependencies (Linux compatible)
+      run: |
+        # Install only Linux-compatible dependencies for security scanning
+        echo "safety>=3.0.0" > requirements-security.txt
+        echo "bandit>=1.7.0" >> requirements-security.txt
+        uv venv
+        uv pip install -r requirements-security.txt
+
+    - name: Run security scan
+      run: |
+        uv run safety check --json --output safety-report.json || true
+        uv run bandit -r src/ -f json -o bandit-report.json || true
+
+    - name: Upload security scan results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-scan-results
+        path: |
+          bandit-report.json
+          safety-report.json

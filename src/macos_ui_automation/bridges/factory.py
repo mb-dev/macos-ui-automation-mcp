@@ -10,9 +10,34 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
+# Import moved inside function to avoid circular imports
+
 if TYPE_CHECKING:
     from .fake_bridge import FakeAXUIElement, FakeNSRunningApplication
     from .interfaces import ApplicationBridge, PyObjCBridge, WorkspaceBridge
+
+# Import bridge classes at module level to avoid PLC0415
+try:
+    from .fake_bridge import (
+        FakeApplicationBridge,
+        FakePyObjCBridge,
+        FakeWorkspaceBridge,
+    )
+except ImportError:
+    FakeApplicationBridge = None
+    FakePyObjCBridge = None
+    FakeWorkspaceBridge = None
+
+try:
+    from .real_bridge import (
+        RealApplicationBridge,
+        RealPyObjCBridge,
+        RealWorkspaceBridge,
+    )
+except ImportError:
+    RealApplicationBridge = None
+    RealPyObjCBridge = None
+    RealWorkspaceBridge = None
 
 logger = logging.getLogger(__name__)
 
@@ -36,11 +61,9 @@ def create_fake_bridges_with_system(
     Returns:
         Tuple of (FakePyObjCBridge, FakeWorkspaceBridge, FakeApplicationBridge)
     """
-    from .fake_bridge import (
-        FakeApplicationBridge,
-        FakePyObjCBridge,
-        FakeWorkspaceBridge,
-    )
+    if not all([FakePyObjCBridge, FakeWorkspaceBridge, FakeApplicationBridge]):
+        msg = "Fake bridge classes not available"
+        raise ImportError(msg)
 
     return (
         FakePyObjCBridge(applications),
@@ -50,6 +73,7 @@ def create_fake_bridges_with_system(
 
 
 def create_pyobjc_bridge(
+    *,
     force_fake: bool = False,
 ) -> tuple[PyObjCBridge, WorkspaceBridge, ApplicationBridge]:
     """
@@ -61,9 +85,10 @@ def create_pyobjc_bridge(
     Returns:
         Tuple of (PyObjCBridge, WorkspaceBridge, ApplicationBridge)
     """
+    # Use explicit force_fake parameter or check if we're in test mode
+    # Import here to avoid circular imports
     from macos_ui_automation.core.registry import is_test_mode
 
-    # Use explicit force_fake parameter or check if we're in test mode
     use_fake = force_fake or is_test_mode()
 
     # If in test mode and bridges are already set globally, use those
@@ -77,44 +102,35 @@ def create_pyobjc_bridge(
 
     if use_fake:
         logger.info("Using fake PyObjC bridge for testing")
-        from .fake_bridge import (
-            FakeApplicationBridge,
-            FakePyObjCBridge,
-            FakeWorkspaceBridge,
-        )
+        if not all([FakePyObjCBridge, FakeWorkspaceBridge, FakeApplicationBridge]):
+            msg = "Fake bridge classes not available"
+            raise ImportError(msg)
 
         return (
             FakePyObjCBridge(),
             FakeWorkspaceBridge(),
             FakeApplicationBridge(),
         )
-    try:
-        logger.info("Using real PyObjC bridge")
-        from .real_bridge import (
-            RealApplicationBridge,
-            RealPyObjCBridge,
-            RealWorkspaceBridge,
-        )
 
+    if all([RealPyObjCBridge, RealWorkspaceBridge, RealApplicationBridge]):
+        logger.info("Using real PyObjC bridge")
         return (
             RealPyObjCBridge(),
             RealWorkspaceBridge(),
             RealApplicationBridge(),
         )
-    except ImportError as e:
-        logger.warning("Failed to import real PyObjC bridge: %s", e)
-        logger.info("Falling back to fake PyObjC bridge")
-        from .fake_bridge import (
-            FakeApplicationBridge,
-            FakePyObjCBridge,
-            FakeWorkspaceBridge,
-        )
 
-        return (
-            FakePyObjCBridge(),
-            FakeWorkspaceBridge(),
-            FakeApplicationBridge(),
-        )
+    logger.warning("Real PyObjC bridge not available, falling back to fake")
+    logger.info("Falling back to fake PyObjC bridge")
+    if not all([FakePyObjCBridge, FakeWorkspaceBridge, FakeApplicationBridge]):
+        msg = "Neither real nor fake bridge classes are available"
+        raise ImportError(msg)
+
+    return (
+        FakePyObjCBridge(),
+        FakeWorkspaceBridge(),
+        FakeApplicationBridge(),
+    )
 
 
 def get_pyobjc_bridge() -> PyObjCBridge:

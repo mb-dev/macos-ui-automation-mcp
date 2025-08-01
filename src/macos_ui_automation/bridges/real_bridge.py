@@ -13,6 +13,14 @@ from .types import AXError, AXUIElementRef, AXValueRef
 
 logger = logging.getLogger(__name__)
 
+# Constants for magic values
+KEY_CODE_TIMEOUT = 0
+COORDINATE_NONE = 0
+EVENT_SOURCE_STATE = 0
+AX_MOCK_TYPE_ID = 12345
+VALUE_CREATION_SUCCESS = True
+PYOBJC_IMPORT_ERROR_CODE = -1
+
 
 class RealPyObjCBridge(PyObjCBridge):
     """Real implementation using actual PyObjC calls."""
@@ -176,12 +184,12 @@ class RealPyObjCBridge(PyObjCBridge):
 
             # Mouse down
             down_event = CGEventCreateMouseEvent(
-                event_source, kCGEventLeftMouseDown, (x, y), 0
+                event_source, kCGEventLeftMouseDown, (x, y), COORDINATE_NONE
             )
 
             # Mouse up
             up_event = CGEventCreateMouseEvent(
-                event_source, kCGEventLeftMouseUp, (x, y), 0
+                event_source, kCGEventLeftMouseUp, (x, y), COORDINATE_NONE
             )
 
             # Post events
@@ -189,11 +197,12 @@ class RealPyObjCBridge(PyObjCBridge):
             CGEventPost(kCGHIDEventTap, up_event)
 
             logger.debug("Clicked at position (%s, %s)", x, y)
-            return True
 
         except Exception:
             logger.exception("Failed to click at position (%s, %s)", x, y)
             return False
+
+        return True
 
     def right_click_at_position(self, x: int, y: int) -> bool:
         """Right-click at specific screen coordinates."""
@@ -212,12 +221,12 @@ class RealPyObjCBridge(PyObjCBridge):
 
             # Right mouse down
             down_event = CGEventCreateMouseEvent(
-                event_source, kCGEventRightMouseDown, (x, y), 0
+                event_source, kCGEventRightMouseDown, (x, y), COORDINATE_NONE
             )
 
             # Right mouse up
             up_event = CGEventCreateMouseEvent(
-                event_source, kCGEventRightMouseUp, (x, y), 0
+                event_source, kCGEventRightMouseUp, (x, y), COORDINATE_NONE
             )
 
             # Post events
@@ -225,11 +234,12 @@ class RealPyObjCBridge(PyObjCBridge):
             CGEventPost(kCGHIDEventTap, up_event)
 
             logger.debug("Right-clicked at position (%s, %s)", x, y)
-            return True
 
         except Exception:
             logger.exception("Failed to right-click at position (%s, %s)", x, y)
             return False
+
+        return True
 
     def drag_between_positions(
         self, start_x: int, start_y: int, end_x: int, end_y: int
@@ -251,26 +261,34 @@ class RealPyObjCBridge(PyObjCBridge):
 
             # Mouse down at start
             down_event = CGEventCreateMouseEvent(
-                event_source, kCGEventLeftMouseDown, (start_x, start_y), 0
+                event_source,
+                kCGEventLeftMouseDown,
+                (start_x, start_y),
+                COORDINATE_NONE,
             )
             CGEventPost(kCGHIDEventTap, down_event)
 
             # Mouse move to end
             move_event = CGEventCreateMouseEvent(
-                event_source, kCGEventMouseMoved, (end_x, end_y), 0
+                event_source,
+                kCGEventMouseMoved,
+                (end_x, end_y),
+                COORDINATE_NONE,
             )
             CGEventPost(kCGHIDEventTap, move_event)
 
             # Mouse up at end
             up_event = CGEventCreateMouseEvent(
-                event_source, kCGEventLeftMouseUp, (end_x, end_y), 0
+                event_source,
+                kCGEventLeftMouseUp,
+                (end_x, end_y),
+                COORDINATE_NONE,
             )
             CGEventPost(kCGHIDEventTap, up_event)
 
             logger.debug(
                 "Dragged from (%s, %s) to (%s, %s)", start_x, start_y, end_x, end_y
             )
-            return True
 
         except Exception:
             logger.exception(
@@ -281,6 +299,8 @@ class RealPyObjCBridge(PyObjCBridge):
                 end_y,
             )
             return False
+
+        return True
 
     def type_text(self, text: str) -> bool:
         """Type text using system input."""
@@ -297,18 +317,21 @@ class RealPyObjCBridge(PyObjCBridge):
             event_source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState)
 
             # Use Unicode string posting which is more reliable for text input
-            unicode_event = CGEventCreateKeyboardEvent(event_source, 0, True)
+            unicode_event = CGEventCreateKeyboardEvent(
+                event_source, KEY_CODE_TIMEOUT, keyDown=True
+            )
 
             # Post the string as Unicode
             CGEventKeyboardSetUnicodeString(unicode_event, len(text), text)
             CGEventPost(kCGHIDEventTap, unicode_event)
 
             logger.debug("Typed text: %s", text)
-            return True
 
         except Exception:
             logger.exception("Failed to type text '%s'", text)
             return False
+
+        return True
 
     def send_key_combination(self, key_code: int, modifiers: list[str]) -> bool:
         """Send key combination with modifiers."""
@@ -341,23 +364,26 @@ class RealPyObjCBridge(PyObjCBridge):
                     flags |= kCGEventFlagMaskAlternate
 
             # Key down
-            down_event = CGEventCreateKeyboardEvent(event_source, key_code, True)
+            down_event = CGEventCreateKeyboardEvent(
+                event_source, key_code, keyDown=True
+            )
             CGEventSetFlags(down_event, flags)
             CGEventPost(kCGHIDEventTap, down_event)
 
             # Key up
-            up_event = CGEventCreateKeyboardEvent(event_source, key_code, False)
+            up_event = CGEventCreateKeyboardEvent(event_source, key_code, keyDown=False)
             CGEventSetFlags(up_event, flags)
             CGEventPost(kCGHIDEventTap, up_event)
 
             logger.debug("Sent key combination: %s + %s", modifiers, key_code)
-            return True
 
         except Exception:
             logger.exception(
                 "Failed to send key combination %s + %d", modifiers, key_code
             )
             return False
+
+        return True
 
 
 class RealWorkspaceBridge(WorkspaceBridge):

@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 from macos_ui_automation.models.types import (
     MenuBarItem,
@@ -46,9 +46,12 @@ class SystemStateDumper:
 
         Args:
             system: System instance to use (default: creates new real System)
-            timeout_seconds: Maximum time to spend traversing UI hierarchy (default 30 seconds)
-            menu_bar_timeout: Maximum time to spend on menu bar traversal (default 2 seconds to avoid triggering menus)
-            only_visible_children: Only traverse children of visible elements (default True to avoid side effects)
+            timeout_seconds: Maximum time to spend traversing UI hierarchy
+                (default 30 seconds)
+            menu_bar_timeout: Maximum time to spend on menu bar traversal
+                (default 2 seconds to avoid triggering menus)
+            only_visible_children: Only traverse children of visible elements
+                (default True to avoid side effects)
         """
         self.timeout_seconds = timeout_seconds
         self.menu_bar_timeout = menu_bar_timeout
@@ -162,7 +165,7 @@ class SystemStateDumper:
                 processes.append(process_state)
 
         return SystemState(
-            timestamp=datetime.now(),
+            timestamp=datetime.now(timezone.utc),
             processes=processes,
             accessibility_enabled=True,
             capture_method="accessibility",
@@ -282,7 +285,8 @@ class SystemStateDumper:
     def _dump_ui_elements_with_timeout(
         self, element: Element, start_time: float, timeout_seconds: float
     ) -> list[UIElement]:
-        """Recursively dump UI elements with hierarchical structure and time-based limits."""
+        """Recursively dump UI elements with hierarchical structure and time-based
+        limits."""
         return self._dump_element_hierarchy(element, start_time, timeout_seconds)
 
     def _dump_element_hierarchy(
@@ -325,7 +329,8 @@ class SystemStateDumper:
             enabled = enabled if enabled is not None else False
             focused = focused if focused is not None else False
 
-            # Handle value field - convert complex objects to None since UIElement expects basic types
+            # Handle value field - convert complex objects to None since UIElement
+            # expects basic types
             if hasattr(value, "__class__") and (
                 "Element" in str(type(value))
                 or "Position" in str(type(value))
@@ -344,11 +349,12 @@ class SystemStateDumper:
             children_count = len(child_elements) if child_elements else 0
 
             nested_children = []
-            if children_count > 0:
-                if not self.only_visible_children or self._is_element_visible(child):
-                    nested_children = self._dump_element_hierarchy(
-                        child, start_time, timeout_seconds, depth + 1
-                    )
+            if children_count > 0 and (
+                not self.only_visible_children or self._is_element_visible(child)
+            ):
+                nested_children = self._dump_element_hierarchy(
+                    child, start_time, timeout_seconds, depth + 1
+                )
 
             # Generate unique element ID for O(1) lookup during actions
             element_id = str(uuid.uuid4())

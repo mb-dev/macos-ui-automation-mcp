@@ -73,7 +73,7 @@ def create_main_window():
     status_text = create_static_text("Status: Ready", {"x": 494, "y": 143})
     dialog_sheet = create_dialog_sheet()
 
-    window = FakeAXUIElement(
+    return FakeAXUIElement(
         element_id="task_mgmt_window",
         attributes={
             "kAXTitleAttribute": "Task Management",
@@ -98,8 +98,6 @@ def create_main_window():
         ],
     )
 
-    return window
-
 
 def create_content_group():
     """Create the main content group with split view."""
@@ -117,7 +115,7 @@ def create_content_group():
         children=create_split_group_children(),
     )
 
-    content_group = FakeAXUIElement(
+    return FakeAXUIElement(
         element_id="content_group",
         attributes={
             "kAXTitleAttribute": None,
@@ -127,8 +125,6 @@ def create_content_group():
         actions=[],
         children=[split_group],
     )
-
-    return content_group
 
 
 def create_split_group_children():
@@ -178,12 +174,14 @@ def create_split_group_children():
     children.append(detail_panel)
 
     # Add two more structural elements
-    for i in range(2):
-        children.append(
+    children.extend(
+        [
             create_button(
                 f"structure_elem_{i}", f"Element {i}", {"x": 100 + i * 50, "y": 200}
             )
-        )
+            for i in range(2)
+        ]
+    )
 
     return children
 
@@ -221,7 +219,7 @@ def create_toolbar():
         actions=["AXPress"],
     )
 
-    toolbar = FakeAXUIElement(
+    return FakeAXUIElement(
         element_id="toolbar",
         attributes={
             "kAXTitleAttribute": None,
@@ -231,8 +229,6 @@ def create_toolbar():
         actions=[],
         children=[sync_button, screenshot_button, menu_tool_button, add_epic_button],
     )
-
-    return toolbar
 
 
 def create_dialog_sheet():
@@ -251,7 +247,7 @@ def create_dialog_sheet():
         children=create_dialog_elements(),
     )
 
-    sheet = FakeAXUIElement(
+    return FakeAXUIElement(
         element_id="dialog_sheet",
         attributes={
             "kAXTitleAttribute": None,
@@ -261,8 +257,6 @@ def create_dialog_sheet():
         actions=[],
         children=[dialog_content],
     )
-
-    return sheet
 
 
 def create_dialog_elements():

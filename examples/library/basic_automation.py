@@ -36,7 +36,6 @@ def main():
         status = "🟢 Active" if process.frontmost else "⚫ Background"
         print(f"  {status} {process.name} (PID: {process.pid})")
 
-
     # Example 2: Find UI elements with JSONPath
     print("\n\n2️⃣ Finding UI Elements")
     print("-" * 30)
@@ -59,7 +58,6 @@ def main():
             if isinstance(button, dict) and button.get("title"):
                 print(f"  • {button['title']}")
 
-
     # Example 3: Application-specific search
     print("\n\n3️⃣ Application-Specific Search")
     print("-" * 30)
@@ -72,13 +70,16 @@ def main():
         print(f"🎯 Focusing on: {target_app.name}")
 
         # Search within specific application
-        app_buttons = selector.find(f"$.processes[?(@.name=='{target_app.name}')]..[?(@.role=='AXButton')]")
+        app_buttons = selector.find(
+            f"$.processes[?(@.name=='{target_app.name}')]..[?(@.role=='AXButton')]"
+        )
         print(f"🔍 Found {len(app_buttons)} buttons in {target_app.name}")
 
         # Find text fields in the app
-        app_text_fields = selector.find(f"$.processes[?(@.name=='{target_app.name}')]..[?(@.role=='AXTextField')]")
+        app_text_fields = selector.find(
+            f"$.processes[?(@.name=='{target_app.name}')]..[?(@.role=='AXTextField')]"
+        )
         print(f"📝 Found {len(app_text_fields)} text fields in {target_app.name}")
-
 
     # Example 4: Element details and properties
     print("\n\n4️⃣ Element Analysis")
@@ -98,7 +99,6 @@ def main():
                 title = element.get("title", "No title")
                 print(f"  • {identifier} ({role}) - {title}")
 
-
     # Example 5: Enabled vs disabled elements
     print("\n\n5️⃣ Element States")
     print("-" * 30)
@@ -114,7 +114,6 @@ def main():
     focused_elements = selector.find("$..[?(@.focused==true)]")
     print(f"🎯 Currently focused elements: {len(focused_elements)}")
 
-
     # Example 6: Save system state for later analysis
     print("\n\n6️⃣ Saving System State")
     print("-" * 30)
@@ -126,7 +125,6 @@ def main():
 
     print(f"💾 System state saved to: {output_file.absolute()}")
     print(f"📊 File size: {output_file.stat().st_size / 1024:.1f} KB")
-
 
     # Example 7: Time-based search with timeout
     print("\n\n7️⃣ Time-Limited Deep Search")
@@ -148,7 +146,8 @@ def main():
     deep_buttons = deep_selector.find("$..[?(@.role=='AXButton')]")
     print(f"🆚 Shallow search: {len(all_buttons)} buttons")
     print(f"🆚 Deep search: {len(deep_buttons)} buttons")
-    print(f"📈 Improvement: {len(deep_buttons) - len(all_buttons)} additional buttons found")
+    improvement = len(deep_buttons) - len(all_buttons)
+    print(f"📈 Improvement: {improvement} additional buttons found")
 
 
 def demo_ui_actions():
@@ -167,19 +166,22 @@ def demo_ui_actions():
     state = dumper.dump_system_state()
     selector = JSONPathSelector(state)
     actions = UIActions(selector)
-    
+
     # Example: Find and click a specific button
     buttons = selector.find("$..[?(@.ax_identifier=='myButton')]")
     if buttons:
         print(f"Found button: {buttons[0].get('title', 'No title')}")
         # actions.click(buttons[0])  # Uncomment to actually click
         print("✅ Would click button (action disabled for safety)")
-    
+
     # Example: Type into a text field
-    text_fields = selector.find("$..[?(@.role=='AXTextField' && @.enabled==true)]")
+    text_fields = selector.find(
+        "$..[?(@.role=='AXTextField' && @.enabled==true)]"
+    )
     if text_fields:
         print(f"Found text field: {text_fields[0].get('title', 'No title')}")
-        # actions.type_text(text_fields[0], "Hello, World!")  # Uncomment to actually type
+        # actions.type_text(text_fields[0], "Hello, World!")
+        # Uncomment to actually type
         print("✅ Would type text (action disabled for safety)")
     """
 

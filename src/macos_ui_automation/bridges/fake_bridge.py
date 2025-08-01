@@ -42,7 +42,7 @@ class FakeAXValue:
             )
         return f"<AXValue 0x123456789 [unknown] {self.data}>"
 
-    def _cfTypeID(self) -> int:
+    def _cf_type_id(self) -> int:
         """Mock _cfTypeID attribute for AXValue detection."""
         return 12345
 
@@ -62,7 +62,7 @@ class FakeAXUIElement:
         for child in self.children:
             child.parent = self
 
-    def _cfTypeID(self) -> int:
+    def _cf_type_id(self) -> int:
         """Mock _cfTypeID attribute for AXUIElement detection."""
         return 54321
 
@@ -274,7 +274,7 @@ class FakePyObjCBridge(PyObjCBridge):
         self, element: AXUIElementRef, attribute: str
     ) -> tuple[AXError, Any | None]:
         """Copy an attribute value from an element."""
-        fake_element: FakeAXUIElement = element  # type: ignore # element is already a FakeAXUIElement
+        fake_element: FakeAXUIElement = element  # type: ignore[assignment]  # element is already a FakeAXUIElement
 
         # Handle special cases first (they may not be in attributes dict)
         if attribute in {"AXChildren", "kAXChildrenAttribute"}:
@@ -368,7 +368,7 @@ class FakePyObjCBridge(PyObjCBridge):
 
     def perform_action(self, element: AXUIElementRef, action: str) -> AXError:
         """Perform an action on an element."""
-        fake_element: FakeAXUIElement = element  # type: ignore # element is already a FakeAXUIElement
+        fake_element: FakeAXUIElement = element  # type: ignore[assignment]  # element is already a FakeAXUIElement
         if hasattr(fake_element, "actions") and action in fake_element.actions:
             # Simulate action side effects
             if action == "AXPress":
@@ -388,6 +388,10 @@ class FakePyObjCBridge(PyObjCBridge):
     def get_value(self, value: AXValueRef, value_type: int) -> Any | None:
         """Extract the actual value from an AXValue."""
         fake_value = value
+        # Constants for value type validation
+        valid_value_types = {1, 2, 3}  # Basic type validation
+        if value_type not in valid_value_types:
+            return None
         if isinstance(fake_value, FakeAXValue):
             return fake_value.data
         return None
@@ -432,7 +436,7 @@ class FakePyObjCBridge(PyObjCBridge):
         """Add a test element for testing purposes."""
         self._elements[element.element_id] = element
 
-    def set_process_trusted(self, trusted: bool) -> None:
+    def set_process_trusted(self, *, trusted: bool) -> None:
         """Set process trust status for testing."""
         self._process_trusted = trusted
 
@@ -459,11 +463,27 @@ class FakeWorkspaceBridge(WorkspaceBridge):
     def _setup_default_apps(self) -> None:
         """Set up default running applications."""
         self._running_applications = [
-            FakeNSRunningApplication("Test App", 1234, "com.test.app", True, False),
             FakeNSRunningApplication(
-                "Another App", 5678, "com.another.app", False, False
+                name="Test App",
+                pid=1234,
+                bundle_id="com.test.app",
+                active=True,
+                hidden=False,
             ),
-            FakeNSRunningApplication("Hidden App", 9999, "com.hidden.app", False, True),
+            FakeNSRunningApplication(
+                name="Another App",
+                pid=5678,
+                bundle_id="com.another.app",
+                active=False,
+                hidden=False,
+            ),
+            FakeNSRunningApplication(
+                name="Hidden App",
+                pid=9999,
+                bundle_id="com.hidden.app",
+                active=False,
+                hidden=True,
+            ),
         ]
         self._frontmost_app = self._running_applications[0]
 

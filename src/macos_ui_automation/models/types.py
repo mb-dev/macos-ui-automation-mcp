@@ -86,8 +86,8 @@ class UIElement(BaseModel):
 
     # Interaction capabilities
     actions: list[str] = Field(default_factory=list, description="Available actions")
-    enabled: bool = Field(True, description="Whether element is enabled")
-    focused: bool = Field(False, description="Whether element has focus")
+    enabled: bool = Field(default=True, description="Whether element is enabled")
+    focused: bool = Field(default=False, description="Whether element has focus")
 
     # Hierarchy
     children: list[UIElement] = Field(
@@ -131,7 +131,9 @@ class MenuBarItem(UIElement):
     menu_items: list[UIElement] = Field(
         default_factory=list, description="Menu items when expanded"
     )
-    expanded: bool = Field(False, description="Whether menu is currently expanded")
+    expanded: bool = Field(
+        default=False, description="Whether menu is currently expanded"
+    )
 
 
 class WindowState(UIElement):
@@ -142,10 +144,12 @@ class WindowState(UIElement):
     element_type: str = Field(default="window", description="Simplified element type")
 
     window_id: int | None = Field(None, description="Window ID")
-    minimized: bool = Field(False, description="Whether window is minimized")
-    maximized: bool = Field(False, description="Whether window is maximized")
-    fullscreen: bool = Field(False, description="Whether window is fullscreen")
-    main_window: bool = Field(False, description="Whether this is the main window")
+    minimized: bool = Field(default=False, description="Whether window is minimized")
+    maximized: bool = Field(default=False, description="Whether window is maximized")
+    fullscreen: bool = Field(default=False, description="Whether window is fullscreen")
+    main_window: bool = Field(
+        default=False, description="Whether this is the main window"
+    )
 
 
 class ProcessState(BaseModel):
@@ -165,8 +169,8 @@ class ProcessState(BaseModel):
     )
 
     # Process state
-    frontmost: bool = Field(False, description="Whether process is frontmost")
-    hidden: bool = Field(False, description="Whether process is hidden")
+    frontmost: bool = Field(default=False, description="Whether process is frontmost")
+    hidden: bool = Field(default=False, description="Whether process is hidden")
 
     # Timestamps
     last_updated: datetime = Field(
@@ -265,7 +269,7 @@ class ErrorResponse(BaseModel):
     """Error response for MCP operations."""
 
     error: str = Field(description="Error message")
-    timeout: bool = Field(False, description="Whether error was due to timeout")
+    timeout: bool = Field(default=False, description="Whether error was due to timeout")
 
 
 class AccessibilityStatus(BaseModel):

@@ -6,8 +6,10 @@ identified through the JSONPath selector system.
 """
 
 import logging
+import time
 
 from macos_ui_automation.bridges.factory import get_pyobjc_bridge
+from macos_ui_automation.bridges.types import AXError
 from macos_ui_automation.core.elements import Element
 from macos_ui_automation.models.types import UIElement
 
@@ -90,8 +92,6 @@ class UIActions:
             return False
 
         # Use bridge to perform action on live element
-        from macos_ui_automation.bridges.types import AXError
-
         result = self.pyobjc_bridge.perform_action(
             live_element.ax_element_ref, "AXPress"
         )
@@ -130,8 +130,6 @@ class UIActions:
                 )
                 return False
 
-            from macos_ui_automation.bridges.types import AXError
-
             result = self.pyobjc_bridge.set_attribute_value(
                 live_element.ax_element_ref, "AXValue", value
             )
@@ -166,14 +164,11 @@ class UIActions:
             return False
 
         # Small delay to ensure focus
-        import time
-
         time.sleep(0.1)
 
         # Clear existing text first (Cmd+A, then type)
-        if not self.pyobjc_bridge.send_key_combination(
-            0x00, ["cmd"]
-        ):  # Cmd+A to select all (0x00 = 'a' key)
+        # Cmd+A to select all (0x00 = 'a' key)
+        if not self.pyobjc_bridge.send_key_combination(0x00, ["cmd"]):
             logger.warning("Failed to select all text")
 
         # Type the new value
@@ -218,8 +213,6 @@ class UIActions:
         """
         # Click twice with small delay
         if self.click_at_position(x, y):
-            import time
-
             time.sleep(0.1)
             return self.click_at_position(x, y)
         return False
