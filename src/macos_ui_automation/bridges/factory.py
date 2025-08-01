@@ -88,7 +88,7 @@ def create_pyobjc_bridge(
     # Use explicit force_fake parameter or check if we're in test mode
     # Import here to avoid circular imports
     from macos_ui_automation.core.registry import is_test_mode
-    
+
     use_fake = force_fake or is_test_mode()
 
     # If in test mode and bridges are already set globally, use those
