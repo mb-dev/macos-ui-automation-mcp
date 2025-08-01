@@ -13,13 +13,6 @@ from macos_ui_automation.bridges.factory import (
     set_bridge_instances,
 )
 from macos_ui_automation.core.registry import set_test_mode
-from tests.fixtures.task_management_system import create_task_management_system
-
-
-def setup_module():
-    """Enable test mode for all tests in this module."""
-    set_test_mode(True)
-
 
 # Import the MCP tool functions directly for testing
 from macos_ui_automation.interfaces.mcp_server import (
@@ -30,6 +23,12 @@ from macos_ui_automation.interfaces.mcp_server import (
     list_running_applications,
     type_text_to_element_by_selector,
 )
+from tests.fixtures.task_management_system import create_task_management_system
+
+
+def setup_module():
+    """Enable test mode for all tests in this module."""
+    set_test_mode(True)
 
 
 class TestMCPIntegration:
