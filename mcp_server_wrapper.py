@@ -16,6 +16,7 @@ def log_debug(message):
     timestamp = datetime.now(timezone.utc).isoformat()
     print(f"[{timestamp}] WRAPPER DEBUG: {message}", file=sys.stderr, flush=True)
 
+
 def main():
     try:
         log_debug("=== MCP Server Wrapper Starting ===")
@@ -55,9 +56,11 @@ def main():
 
         # Import and run the server
         log_debug("Importing MCP server...")
-        mcp_module = importlib.import_module("macos_ui_automation.interfaces.mcp_server")
+        mcp_module = importlib.import_module(
+            "macos_ui_automation.interfaces.mcp_server"
+        )
         server_main = mcp_module.main
-        
+
         log_debug("Starting MCP server...")
         server_main()
 
@@ -70,6 +73,7 @@ def main():
         log_debug(f"Unexpected error: {e}")
         traceback.print_exc(file=sys.stderr)
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

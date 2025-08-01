@@ -46,9 +46,12 @@ class SystemStateDumper:
 
         Args:
             system: System instance to use (default: creates new real System)
-            timeout_seconds: Maximum time to spend traversing UI hierarchy (default 30 seconds)
-            menu_bar_timeout: Maximum time to spend on menu bar traversal (default 2 seconds to avoid triggering menus)
-            only_visible_children: Only traverse children of visible elements (default True to avoid side effects)
+            timeout_seconds: Maximum time to spend traversing UI hierarchy
+                (default 30 seconds)
+            menu_bar_timeout: Maximum time to spend on menu bar traversal
+                (default 2 seconds to avoid triggering menus)
+            only_visible_children: Only traverse children of visible elements
+                (default True to avoid side effects)
         """
         self.timeout_seconds = timeout_seconds
         self.menu_bar_timeout = menu_bar_timeout

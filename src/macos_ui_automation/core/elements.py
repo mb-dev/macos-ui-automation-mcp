@@ -96,7 +96,8 @@ class Element:
                 if "AXValue" in value_str:
                     # Extract position (x, y)
                     if "kAXValueCGPointType" in value_str:
-                        # Pattern for format: {value = x:652.000000 y:-77.000000 type = kAXValueCGPointType}
+                        # Pattern for format: {value = x:652.000000 y:-77.000000
+                        # type = kAXValueCGPointType}
                         match = re.search(r"x:(-?\d+\.?\d*) y:(-?\d+\.?\d*)", value_str)
                         if match:
                             x, y = map(float, match.groups())
@@ -119,7 +120,8 @@ class Element:
                     # Extract rect (x, y, width, height)
                     elif "kAXValueCGRectType" in value_str:
                         match = re.search(
-                            r"x:(-?\d+\.?\d*) y:(-?\d+\.?\d*) w:(-?\d+\.?\d*) h:(-?\d+\.?\d*)",
+                            r"x:(-?\d+\.?\d*) y:(-?\d+\.?\d*) w:(-?\d+\.?\d*) "
+                            r"h:(-?\d+\.?\d*)",
                             value_str,
                         )
                         if match:
@@ -148,7 +150,8 @@ class Element:
                 and hasattr(value, "__len__")
                 and len(value) > 0
             ):
-                # Check if it's a list/array of AXUIElementRefs (handles both Python lists and NSArray)
+                # Check if it's a list/array of AXUIElementRefs
+                # (handles both Python lists and NSArray)
                 first_elem = value[0]
                 if (
                     hasattr(first_elem, "_cfTypeID")
