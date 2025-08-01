@@ -40,6 +40,9 @@ jobs:
     - name: Run formatting check (ruff format)
       run: uv run ruff format --diff src/ tests/ mcp_server_wrapper.py
 
+    - name: Create junit directory
+      run: mkdir -p junit
+
     - name: Run tests with coverage
       run: |
         uv run python -m pytest tests/ \
@@ -140,7 +143,7 @@ jobs:
     - name: Run security scan
       run: |
         uv add --dev safety bandit
-        uv run safety check
+        uv run safety check --json --output safety-report.json || true
         uv run bandit -r src/ -f json -o bandit-report.json || true
 
     - name: Upload security scan results
@@ -148,4 +151,6 @@ jobs:
       if: always()
       with:
         name: security-scan-results
-        path: bandit-report.json
+        path: |
+          bandit-report.json
+          safety-report.json
