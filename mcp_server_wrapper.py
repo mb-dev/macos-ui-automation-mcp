@@ -3,6 +3,7 @@
 Wrapper script for MCP server with enhanced logging for Claude Code debugging.
 """
 
+import importlib
 import os
 import sys
 import traceback
@@ -54,13 +55,10 @@ def main():
 
         # Import and run the server
         log_debug("Importing MCP server...")
-        # Import at top level to avoid PLC0415
-        
-        log_debug("Starting MCP server...")
-        # Import at module level
-        import importlib
         mcp_module = importlib.import_module("macos_ui_automation.interfaces.mcp_server")
         server_main = mcp_module.main
+        
+        log_debug("Starting MCP server...")
         server_main()
 
     except ImportError as e:
