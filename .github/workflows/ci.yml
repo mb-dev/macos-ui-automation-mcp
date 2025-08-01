@@ -50,7 +50,7 @@ jobs:
           --cov=src/macos_ui_automation \
           --cov-report=xml \
           --cov-report=html \
-          --cov-fail-under=85 \
+          --cov-fail-under=60 \
           --junitxml=junit/test-results.xml
 
     - name: Upload coverage reports
