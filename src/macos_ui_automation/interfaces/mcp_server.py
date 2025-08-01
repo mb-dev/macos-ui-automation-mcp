@@ -153,7 +153,7 @@ def click_at_position(x: int, y: int) -> str:
         return f"Failed to click at position ({x}, {y})"
 
     except Exception as e:
-        logger.exception("Error clicking at position: %s", e)
+        logger.exception("Error clicking at position")
         return f"Error clicking at position: {e}"
 
 

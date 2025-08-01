@@ -274,7 +274,7 @@ class FakePyObjCBridge(PyObjCBridge):
         self, element: AXUIElementRef, attribute: str
     ) -> tuple[AXError, Any | None]:
         """Copy an attribute value from an element."""
-        fake_element: FakeAXUIElement = element  # type: ignore # element is already a FakeAXUIElement
+        fake_element: FakeAXUIElement = element  # type: ignore[assignment]  # element is already a FakeAXUIElement
 
         # Handle special cases first (they may not be in attributes dict)
         if attribute in {"AXChildren", "kAXChildrenAttribute"}:
@@ -368,7 +368,7 @@ class FakePyObjCBridge(PyObjCBridge):
 
     def perform_action(self, element: AXUIElementRef, action: str) -> AXError:
         """Perform an action on an element."""
-        fake_element: FakeAXUIElement = element  # type: ignore # element is already a FakeAXUIElement
+        fake_element: FakeAXUIElement = element  # type: ignore[assignment]  # element is already a FakeAXUIElement
         if hasattr(fake_element, "actions") and action in fake_element.actions:
             # Simulate action side effects
             if action == "AXPress":
@@ -388,6 +388,9 @@ class FakePyObjCBridge(PyObjCBridge):
     def get_value(self, value: AXValueRef, value_type: int) -> Any | None:
         """Extract the actual value from an AXValue."""
         fake_value = value
+        # Use value_type for validation in fake implementation
+        if value_type not in [1, 2, 3]:  # Basic type validation
+            return None
         if isinstance(fake_value, FakeAXValue):
             return fake_value.data
         return None

@@ -349,11 +349,10 @@ class SystemStateDumper:
             children_count = len(child_elements) if child_elements else 0
 
             nested_children = []
-            if children_count > 0:
-                if not self.only_visible_children or self._is_element_visible(child):
-                    nested_children = self._dump_element_hierarchy(
-                        child, start_time, timeout_seconds, depth + 1
-                    )
+            if children_count > 0 and (not self.only_visible_children or self._is_element_visible(child)):
+                nested_children = self._dump_element_hierarchy(
+                    child, start_time, timeout_seconds, depth + 1
+                )
 
             # Generate unique element ID for O(1) lookup during actions
             element_id = str(uuid.uuid4())

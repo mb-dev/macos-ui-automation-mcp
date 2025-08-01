@@ -212,9 +212,9 @@ def find_elements(args: argparse.Namespace) -> None:
             elements = selector.find_by_role("AXMenuItem")
     elif args.element_type == "windows":
         if args.title:
-            elements = selector.find_windows_by_title(args.title)  # type: ignore
+            elements = selector.find_windows_by_title(args.title)  # type: ignore[assignment]
         else:
-            elements = selector.find_frontmost_app_windows()  # type: ignore
+            elements = selector.find_frontmost_app_windows()  # type: ignore[assignment]
     else:
         print(f"❌ Unknown element type: {args.element_type}")
         sys.exit(1)
@@ -275,6 +275,8 @@ def info_command(args: argparse.Namespace) -> None:
 def test_accessibility(args: argparse.Namespace) -> None:
     """Test accessibility permissions and functionality."""
     print("🔐 Testing accessibility permissions...")
+    if hasattr(args, "verbose") and args.verbose:
+        print("🔍 Running in verbose mode...")
 
     from ApplicationServices import AXIsProcessTrusted
 

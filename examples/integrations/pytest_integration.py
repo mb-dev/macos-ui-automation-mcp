@@ -283,7 +283,7 @@ class TestCalculatorApp:
 class TestUITiming:
     """Test cases for timing and performance."""
 
-    def test_state_capture_timing(self, ui_fixture):
+    def test_state_capture_timing(self):
         """Test UI state capture performance."""
         start_time = time.time()
 
@@ -309,7 +309,7 @@ class TestUITiming:
             f"Button search should be under 2s, took {search_time:.2f}s"
         )
 
-    def test_timeout_handling(self, ui_fixture):
+    def test_timeout_handling(self):
         """Test timeout handling in deep searches."""
         # This would test timeout functionality
         deep_dumper = SystemStateDumper(max_depth=15, only_visible_children=True)
