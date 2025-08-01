@@ -1,4 +1,3 @@
-
 """
 Command-line interface for macOS UI Automation.
 
@@ -74,9 +73,7 @@ def action_command(args: argparse.Namespace) -> None:
                     print("❌ Click failed!")
             else:
                 print("⚠️ Element is not clickable")
-                actions_str = (
-                    ", ".join(element.actions) if element.actions else "None"
-                )
+                actions_str = ", ".join(element.actions) if element.actions else "None"
                 print(f"Available actions: {actions_str}")
 
         elif args.action == "set_value":
@@ -107,9 +104,7 @@ def action_command(args: argparse.Namespace) -> None:
         else:
             print(f"❌ Unknown action: {args.action}")
 
-    print(
-        f"\n🏁 Action completed on {success_count}/{len(elements)} element(s)"
-    )
+    print(f"\n🏁 Action completed on {success_count}/{len(elements)} element(s)")
 
 
 def dump_system_state(args: argparse.Namespace) -> None:

@@ -371,9 +371,7 @@ class RealPyObjCBridge(PyObjCBridge):
             CGEventPost(kCGHIDEventTap, down_event)
 
             # Key up
-            up_event = CGEventCreateKeyboardEvent(
-                event_source, key_code, keyDown=False
-            )
+            up_event = CGEventCreateKeyboardEvent(event_source, key_code, keyDown=False)
             CGEventSetFlags(up_event, flags)
             CGEventPost(kCGHIDEventTap, up_event)
 

@@ -133,9 +133,7 @@ def click_element_by_selector(jsonpath_selector: str) -> str:
             logger.info(
                 "Successfully clicked element: %s", element.title or element.role
             )
-            return (
-                f"Successfully clicked element: {element.title or element.role}"
-            )
+            return f"Successfully clicked element: {element.title or element.role}"
         logger.error("Failed to click element: %s", element.title or element.role)
         return f"Failed to click element: {element.title or element.role}"
 
@@ -228,9 +226,7 @@ def type_text_to_element_by_selector(jsonpath_selector: str, text: str) -> str:
         logger.error(
             "Failed to type text into element: %s", element.title or element.role
         )
-        return (
-            f"Failed to type text into element: {element.title or element.role}"
-        )
+        return f"Failed to type text into element: {element.title or element.role}"
 
     except Exception as e:
         logger.exception("Type text failed: %s")
@@ -290,9 +286,7 @@ def find_elements(
         if elapsed >= timeout_seconds:
             logger.warning("Search timed out during state dump (%.2fs)", elapsed)
             error_response = ErrorResponse(
-                error=(
-                    f"Search timed out during state collection ({elapsed:.2f}s)"
-                ),
+                error=(f"Search timed out during state collection ({elapsed:.2f}s)"),
                 timeout=True,
             )
             return [error_response.model_dump()]

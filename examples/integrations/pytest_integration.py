@@ -155,9 +155,9 @@ class TestUIAutomation:
 
         # Should have at least one frontmost application
         frontmost_apps = [p for p in processes if p.frontmost]
-        assert (
-            len(frontmost_apps) >= 1
-        ), "Should have at least one frontmost application"
+        assert len(frontmost_apps) >= 1, (
+            "Should have at least one frontmost application"
+        )
 
     def test_find_ui_elements(self, ui_fixture):
         """Test finding basic UI elements."""
@@ -317,8 +317,7 @@ class TestUITiming:
 
         search_time = time.time() - start_time
         assert search_time < MAX_SEARCH_TIME, (
-            f"Button search should be under {MAX_SEARCH_TIME}s, "
-            f"took {search_time:.2f}s"
+            f"Button search should be under {MAX_SEARCH_TIME}s, took {search_time:.2f}s"
         )
 
     def test_timeout_handling(self):

@@ -174,12 +174,14 @@ def create_split_group_children():
     children.append(detail_panel)
 
     # Add two more structural elements
-    children.extend([
-        create_button(
-            f"structure_elem_{i}", f"Element {i}", {"x": 100 + i * 50, "y": 200}
-        )
-        for i in range(2)
-    ])
+    children.extend(
+        [
+            create_button(
+                f"structure_elem_{i}", f"Element {i}", {"x": 100 + i * 50, "y": 200}
+            )
+            for i in range(2)
+        ]
+    )
 
     return children
 

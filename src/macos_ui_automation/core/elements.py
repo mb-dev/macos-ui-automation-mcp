@@ -302,9 +302,7 @@ class AccessibilityProvider:
             ax_element_ref = self._bridge.create_application(pid)
             return Element(ax_element_ref, self._bridge)
         except Exception:
-            logger.exception(
-                "Failed to create application element for PID %s", pid
-            )
+            logger.exception("Failed to create application element for PID %s", pid)
             return None
 
     def get_attribute_value(self, element: Element, attribute: str) -> Any:
