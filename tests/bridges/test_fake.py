@@ -17,6 +17,16 @@ from macos_ui_automation.bridges.fake_bridge import (
 )
 from macos_ui_automation.bridges.types import AXError, AXValueType
 
+# Constants for magic values
+AX_MOCK_TYPE_ID = 12345
+AX_ELEMENT_TYPE_ID = 54321
+TEST_PID_DEFAULT = 1234
+TEST_PID_CUSTOM = 5555
+TEST_PID_INCOMPLETE = 6666
+TEST_PID_FRONTMOST = 8888
+TEST_PID_ADD_CUSTOM = 9999
+EXPECTED_CHILDREN_COUNT = 2
+
 
 class TestFakeAXValue:
     """Test FakeAXValue class."""
@@ -56,7 +66,7 @@ class TestFakeAXValue:
         """Test _cf_type_id mock attribute."""
         value = FakeAXValue(AXValueType.CGPOINT.value, {"x": 0, "y": 0})
         assert hasattr(value, "_cf_type_id")
-        assert value._cf_type_id() == 12345
+        assert value._cf_type_id() == AX_MOCK_TYPE_ID
 
 
 class TestFakeAXUIElement:
@@ -78,7 +88,7 @@ class TestFakeAXUIElement:
         """Test _cf_type_id mock attribute."""
         element = FakeAXUIElement("test")
         assert hasattr(element, "_cf_type_id")
-        assert element._cf_type_id() == 54321
+        assert element._cf_type_id() == AX_ELEMENT_TYPE_ID
 
     def test_hierarchy(self):
         """Test element hierarchy."""
@@ -86,7 +96,7 @@ class TestFakeAXUIElement:
         child2 = FakeAXUIElement("child2")
         parent = FakeAXUIElement("parent", children=[child1, child2])
 
-        assert len(parent.children) == 2
+        assert len(parent.children) == EXPECTED_CHILDREN_COUNT
         assert child1.parent == parent
         assert child2.parent == parent
 
@@ -105,7 +115,7 @@ class TestFakeNSRunningApplication:
         )
 
         assert app.name == "Test App"
-        assert app.pid == 1234
+        assert app.pid == TEST_PID_DEFAULT
         assert app.bundle_id == "com.test.app"
         assert app.active is True
         assert app.hidden is False
@@ -123,7 +133,7 @@ class TestFakePyObjCBridge:
         assert self.bridge.is_process_trusted() is True
 
         # Test setting trust status
-        self.bridge.set_process_trusted(False)
+        self.bridge.set_process_trusted(trusted=False)
         assert self.bridge.is_process_trusted() is False
 
     def test_create_application(self):
@@ -138,7 +148,7 @@ class TestFakePyObjCBridge:
     def test_copy_attribute_value_success(self):
         """Test copying attribute value successfully."""
         # Use pre-existing test element from setup
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error, value = self.bridge.copy_attribute_value(test_app, "kAXTitleAttribute")
         assert error == AXError.SUCCESS
@@ -146,7 +156,7 @@ class TestFakePyObjCBridge:
 
     def test_copy_attribute_value_unsupported(self):
         """Test copying unsupported attribute."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error, value = self.bridge.copy_attribute_value(
             test_app, "kAXNonexistentAttribute"
@@ -156,7 +166,7 @@ class TestFakePyObjCBridge:
 
     def test_copy_attribute_names(self):
         """Test getting attribute names."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error, attributes = self.bridge.copy_attribute_names(test_app)
         assert error == AXError.SUCCESS
@@ -165,7 +175,7 @@ class TestFakePyObjCBridge:
 
     def test_copy_action_names(self):
         """Test getting action names."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error, actions = self.bridge.copy_action_names(test_app)
         assert error == AXError.SUCCESS
@@ -173,7 +183,7 @@ class TestFakePyObjCBridge:
 
     def test_set_attribute_value(self):
         """Test setting attribute value."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error = self.bridge.set_attribute_value(
             test_app, "kAXTitleAttribute", "New Title"
@@ -187,14 +197,14 @@ class TestFakePyObjCBridge:
 
     def test_perform_action_success(self):
         """Test performing valid action."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error = self.bridge.perform_action(test_app, "AXPress")
         assert error == AXError.SUCCESS
 
     def test_perform_action_unsupported(self):
         """Test performing unsupported action."""
-        test_app = self.bridge._applications[1234]
+        test_app = self.bridge._applications[TEST_PID_DEFAULT]
 
         error = self.bridge.perform_action(test_app, "NonexistentAction")
         assert error == AXError.ACTION_UNSUPPORTED
@@ -255,7 +265,9 @@ class TestFakeWorkspaceBridge:
 
     def test_add_application(self):
         """Test adding custom application."""
-        custom_app = FakeNSRunningApplication("Custom App", 9999, "com.custom.app")
+        custom_app = FakeNSRunningApplication(
+            "Custom App", TEST_PID_ADD_CUSTOM, "com.custom.app"
+        )
 
         initial_count = len(self.bridge.get_running_applications())
         self.bridge.add_application(custom_app)
@@ -266,7 +278,7 @@ class TestFakeWorkspaceBridge:
     def test_set_frontmost_application(self):
         """Test setting frontmost application."""
         custom_app = FakeNSRunningApplication(
-            "Frontmost App", 8888, "com.frontmost.app"
+            "Frontmost App", TEST_PID_FRONTMOST, "com.frontmost.app"
         )
 
         self.bridge.set_frontmost_application(custom_app)
@@ -283,7 +295,7 @@ class TestFakeApplicationBridge:
         self.bridge = FakeApplicationBridge()
         self.test_app = FakeNSRunningApplication(
             name="Test App",
-            pid=5555,
+            pid=TEST_PID_CUSTOM,
             bundle_id="com.test.app",
             active=True,
             hidden=False,
@@ -297,7 +309,7 @@ class TestFakeApplicationBridge:
     def test_get_process_identifier(self):
         """Test getting process identifier."""
         pid = self.bridge.get_process_identifier(self.test_app)
-        assert pid == 5555
+        assert pid == TEST_PID_CUSTOM
 
     def test_get_bundle_identifier(self):
         """Test getting bundle identifier."""
@@ -314,7 +326,7 @@ class TestFakeApplicationBridge:
 
     def test_missing_attributes(self):
         """Test handling missing attributes gracefully."""
-        incomplete_app = FakeNSRunningApplication("Incomplete", 6666)
+        incomplete_app = FakeNSRunningApplication("Incomplete", TEST_PID_INCOMPLETE)
         # bundle_id is None by default
 
         name = self.bridge.get_localized_name(incomplete_app)

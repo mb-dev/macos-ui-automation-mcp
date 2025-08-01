@@ -146,9 +146,8 @@ def main():
     deep_buttons = deep_selector.find("$..[?(@.role=='AXButton')]")
     print(f"🆚 Shallow search: {len(all_buttons)} buttons")
     print(f"🆚 Deep search: {len(deep_buttons)} buttons")
-    print(
-        f"📈 Improvement: {len(deep_buttons) - len(all_buttons)} additional buttons found"
-    )
+    improvement = len(deep_buttons) - len(all_buttons)
+    print(f"📈 Improvement: {improvement} additional buttons found")
 
 
 def demo_ui_actions():
@@ -181,7 +180,8 @@ def demo_ui_actions():
     )
     if text_fields:
         print(f"Found text field: {text_fields[0].get('title', 'No title')}")
-        # actions.type_text(text_fields[0], "Hello, World!")  # Uncomment to actually type
+        # actions.type_text(text_fields[0], "Hello, World!")
+        # Uncomment to actually type
         print("✅ Would type text (action disabled for safety)")
     """
 

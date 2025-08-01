@@ -19,6 +19,7 @@ from macos_ui_automation.bridges import (
     get_pyobjc_bridge,
     get_workspace_bridge,
 )
+from macos_ui_automation.models.types import Position, Size
 
 logger = logging.getLogger(__name__)
 
@@ -81,6 +82,22 @@ class Element:
             "AXExtrasMenuBar": "AXExtrasMenuBar",
         }
 
+    def _is_ax_value_object(self, value: Any) -> bool:
+        """Check if value is an AXValue object."""
+        return (
+            value is not None
+            and hasattr(value, "__class__")
+            and "AXValue" in str(type(value))
+        )
+
+    def _is_ax_ui_element(self, value: Any) -> bool:
+        """Check if value is an AXUIElement object."""
+        return (
+            value is not None
+            and hasattr(value, "__class__")
+            and "AXUIElement" in str(type(value))
+        )
+
     def get_attribute_value(self, attribute: str) -> Any:
         """Get an attribute value from the element."""
         # Convert our attribute constant to system constant
@@ -91,7 +108,7 @@ class Element:
 
         if error == AXError.SUCCESS:
             # Handle AXValue objects (position, size, frame)
-            if value is not None and hasattr(value, "_cf_type_id"):
+            if self._is_ax_value_object(value):
                 value_str = str(value)
                 if "AXValue" in value_str:
                     # Extract position (x, y)
@@ -102,8 +119,6 @@ class Element:
                         if match:
                             x, y = map(float, match.groups())
                             # Return a dict that matches Pydantic Position model
-                            from macos_ui_automation.models.types import Position
-
                             return Position(x=int(x), y=int(y))
 
                     # Extract size (width, height)
@@ -113,8 +128,6 @@ class Element:
                         if match:
                             w, h = map(float, match.groups())
                             # Return a dict that matches Pydantic Size model
-                            from macos_ui_automation.models.types import Size
-
                             return Size(width=int(w), height=int(h))
 
                     # Extract rect (x, y, width, height)
@@ -127,22 +140,13 @@ class Element:
                         if match:
                             x, y, w, h = map(float, match.groups())
                             # Return a dict that matches Pydantic models
-                            from macos_ui_automation.models.types import (
-                                Position,
-                                Size,
-                            )
-
                             return {
                                 "origin": Position(x=int(x), y=int(y)),
                                 "size": Size(width=int(w), height=int(h)),
                             }
 
             # Handle AXUIElement objects
-            if (
-                value is not None
-                and hasattr(value, "_cf_type_id")
-                and str(type(value)).find("AXUIElement") != -1
-            ):
+            if self._is_ax_ui_element(value):
                 return Element(value, self._bridge)
             if (
                 value
@@ -153,10 +157,7 @@ class Element:
                 # Check if it's a list/array of AXUIElementRefs
                 # (handles both Python lists and NSArray)
                 first_elem = value[0]
-                if (
-                    hasattr(first_elem, "_cf_type_id")
-                    and str(type(first_elem)).find("AXUIElement") != -1
-                ):
+                if self._is_ax_ui_element(first_elem):
                     return [Element(elem, self._bridge) for elem in value]
             return value
         return None
@@ -208,7 +209,10 @@ class Element:
             error = self._bridge.set_attribute_value(
                 self.ax_element_ref, system_attribute, value
             )
-            return error == AXError.SUCCESS
+            if error != AXError.SUCCESS:
+                logger.error("set_attribute_value failed with error: %s", error)
+                return False
+            return True
 
         except Exception:
             logger.exception("Failed to set attribute %s", attribute)
@@ -218,7 +222,10 @@ class Element:
         """Perform an action on the element."""
         try:
             error = self._bridge.perform_action(self.ax_element_ref, action)
-            return error == AXError.SUCCESS
+            if error != AXError.SUCCESS:
+                logger.error("perform_action failed with error: %s", error)
+                return False
+            return True
         except Exception:
             logger.exception("Failed to perform action %s", action)
             return False
@@ -271,7 +278,7 @@ class Workspace:
             ns_apps = self._workspace_bridge.get_running_applications()
             return [Application(app, self._application_bridge) for app in ns_apps]
         except Exception:
-            logger.exception("Failed to get running applications: %s")
+            logger.exception("Failed to get running applications")
             return []
 
     def is_accessibility_trusted(self) -> bool:
@@ -279,7 +286,7 @@ class Workspace:
         try:
             return self._pyobjc_bridge.is_process_trusted()
         except Exception:
-            logger.exception("Failed to check accessibility trust: %s")
+            logger.exception("Failed to check accessibility trust")
             return False
 
 
@@ -295,7 +302,9 @@ class AccessibilityProvider:
             ax_element_ref = self._bridge.create_application(pid)
             return Element(ax_element_ref, self._bridge)
         except Exception:
-            logger.exception("Failed to create application element for PID %s", pid)
+            logger.exception(
+                "Failed to create application element for PID %s", pid
+            )
             return None
 
     def get_attribute_value(self, element: Element, attribute: str) -> Any:
@@ -322,9 +331,10 @@ class AccessibilityProvider:
 class System:
     """Main system class for UI automation."""
 
-    def __init__(self, use_fake: bool = False) -> None:
+    def __init__(self, *, use_fake: bool = False) -> None:
         # Get bridge instances
         if use_fake:
+            # Import here to avoid circular imports
             from macos_ui_automation.bridges.factory import create_pyobjc_bridge
 
             pyobjc_bridge, workspace_bridge, application_bridge = create_pyobjc_bridge(

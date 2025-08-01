@@ -388,8 +388,9 @@ class FakePyObjCBridge(PyObjCBridge):
     def get_value(self, value: AXValueRef, value_type: int) -> Any | None:
         """Extract the actual value from an AXValue."""
         fake_value = value
-        # Use value_type for validation in fake implementation
-        if value_type not in [1, 2, 3]:  # Basic type validation
+        # Constants for value type validation
+        valid_value_types = {1, 2, 3}  # Basic type validation
+        if value_type not in valid_value_types:
             return None
         if isinstance(fake_value, FakeAXValue):
             return fake_value.data
@@ -435,7 +436,7 @@ class FakePyObjCBridge(PyObjCBridge):
         """Add a test element for testing purposes."""
         self._elements[element.element_id] = element
 
-    def set_process_trusted(self, trusted: bool) -> None:
+    def set_process_trusted(self, *, trusted: bool) -> None:
         """Set process trust status for testing."""
         self._process_trusted = trusted
 
@@ -462,11 +463,27 @@ class FakeWorkspaceBridge(WorkspaceBridge):
     def _setup_default_apps(self) -> None:
         """Set up default running applications."""
         self._running_applications = [
-            FakeNSRunningApplication("Test App", 1234, "com.test.app", True, False),
             FakeNSRunningApplication(
-                "Another App", 5678, "com.another.app", False, False
+                name="Test App",
+                pid=1234,
+                bundle_id="com.test.app",
+                active=True,
+                hidden=False,
             ),
-            FakeNSRunningApplication("Hidden App", 9999, "com.hidden.app", False, True),
+            FakeNSRunningApplication(
+                name="Another App",
+                pid=5678,
+                bundle_id="com.another.app",
+                active=False,
+                hidden=False,
+            ),
+            FakeNSRunningApplication(
+                name="Hidden App",
+                pid=9999,
+                bundle_id="com.hidden.app",
+                active=False,
+                hidden=True,
+            ),
         ]
         self._frontmost_app = self._running_applications[0]
 

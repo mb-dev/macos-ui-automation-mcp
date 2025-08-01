@@ -1,0 +1,3276 @@
+[
+  {
+    "cell": null,
+    "code": "EXE001",
+    "end_location": {
+      "column": 23,
+      "row": 1
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Shebang is present but file is not executable",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/shebang-not-executable"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 35,
+      "row": 144
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 144
+    },
+    "message": "Magic value used in comparison, consider replacing `5` with a constant variable",
+    "noqa_row": 144,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PT018",
+    "end_location": {
+      "column": 89,
+      "row": 183
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 17,
+      "row": 183
+    },
+    "message": "Assertion should be broken down into multiple parts",
+    "noqa_row": 183,
+    "url": "https://docs.astral.sh/ruff/rules/pytest-composite-assertion"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 43,
+      "row": 237
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 41,
+      "row": 237
+    },
+    "message": "Magic value used in comparison, consider replacing `10` with a constant variable",
+    "noqa_row": 237,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "ERA001",
+    "end_location": {
+      "column": 55,
+      "row": 269
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": {
+      "applicability": "displayonly",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 270
+          },
+          "location": {
+            "column": 1,
+            "row": 269
+          }
+        }
+      ],
+      "message": "Remove commented-out code"
+    },
+    "location": {
+      "column": 9,
+      "row": 269
+    },
+    "message": "Found commented-out code",
+    "noqa_row": 269,
+    "url": "https://docs.astral.sh/ruff/rules/commented-out-code"
+  },
+  {
+    "cell": null,
+    "code": "ERA001",
+    "end_location": {
+      "column": 56,
+      "row": 277
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": {
+      "applicability": "displayonly",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 278
+          },
+          "location": {
+            "column": 1,
+            "row": 277
+          }
+        }
+      ],
+      "message": "Remove commented-out code"
+    },
+    "location": {
+      "column": 9,
+      "row": 277
+    },
+    "message": "Found commented-out code",
+    "noqa_row": 277,
+    "url": "https://docs.astral.sh/ruff/rules/commented-out-code"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 34,
+      "row": 295
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 295
+    },
+    "message": "Magic value used in comparison, consider replacing `5.0` with a constant variable",
+    "noqa_row": 295,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 33,
+      "row": 308
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 308
+    },
+    "message": "Magic value used in comparison, consider replacing `2.0` with a constant variable",
+    "noqa_row": 308,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 34,
+      "row": 322
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 322
+    },
+    "message": "Magic value used in comparison, consider replacing `4.0` with a constant variable",
+    "noqa_row": 322,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "BLE001",
+    "end_location": {
+      "column": 25,
+      "row": 323
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 16,
+      "row": 323
+    },
+    "message": "Do not catch blind exception: `Exception`",
+    "noqa_row": 323,
+    "url": "https://docs.astral.sh/ruff/rules/blind-except"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 34,
+      "row": 326
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/integrations/pytest_integration.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 326
+    },
+    "message": "Magic value used in comparison, consider replacing `4.0` with a constant variable",
+    "noqa_row": 326,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "EXE001",
+    "end_location": {
+      "column": 23,
+      "row": 1
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/library/basic_automation.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Shebang is present but file is not executable",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/shebang-not-executable"
+  },
+  {
+    "cell": null,
+    "code": "RUF001",
+    "end_location": {
+      "column": 13,
+      "row": 157
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/library/basic_automation.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 157
+    },
+    "message": "String contains ambiguous `ℹ` (INFORMATION SOURCE). Did you mean `i` (LATIN SMALL LETTER I)?",
+    "noqa_row": 157,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-unicode-character-string"
+  },
+  {
+    "cell": null,
+    "code": "RUF001",
+    "end_location": {
+      "column": 13,
+      "row": 158
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/library/basic_automation.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 158
+    },
+    "message": "String contains ambiguous `ℹ` (INFORMATION SOURCE). Did you mean `i` (LATIN SMALL LETTER I)?",
+    "noqa_row": 158,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-unicode-character-string"
+  },
+  {
+    "cell": null,
+    "code": "BLE001",
+    "end_location": {
+      "column": 21,
+      "row": 201
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/examples/library/basic_automation.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 201
+    },
+    "message": "Do not catch blind exception: `Exception`",
+    "noqa_row": 201,
+    "url": "https://docs.astral.sh/ruff/rules/blind-except"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 6,
+      "row": 43
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 39
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 39,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 15,
+      "row": 53
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 53
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 53,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 15,
+      "row": 53
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 53
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 53,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 63,
+      "row": 64
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 64
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 64,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 10,
+      "row": 84
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 80
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 80,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 10,
+      "row": 97
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 93
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 93,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 10,
+      "row": 111
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 107
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 107,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 26,
+      "row": 183
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 183
+    },
+    "message": "Using the global statement to update `_pyobjc_bridge` is discouraged",
+    "noqa_row": 183,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 45,
+      "row": 183
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 183
+    },
+    "message": "Using the global statement to update `_workspace_bridge` is discouraged",
+    "noqa_row": 183,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 66,
+      "row": 183
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 47,
+      "row": 183
+    },
+    "message": "Using the global statement to update `_application_bridge` is discouraged",
+    "noqa_row": 183,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 26,
+      "row": 204
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 204
+    },
+    "message": "Using the global statement to update `_pyobjc_bridge` is discouraged",
+    "noqa_row": 204,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 45,
+      "row": 204
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 204
+    },
+    "message": "Using the global statement to update `_workspace_bridge` is discouraged",
+    "noqa_row": 204,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "PLW0603",
+    "end_location": {
+      "column": 66,
+      "row": 204
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/factory.py",
+    "fix": null,
+    "location": {
+      "column": 47,
+      "row": 204
+    },
+    "message": "Using the global statement to update `_application_bridge` is discouraged",
+    "noqa_row": 204,
+    "url": "https://docs.astral.sh/ruff/rules/global-statement"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 42,
+      "row": 438
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 35,
+      "row": 438
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 438,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 76,
+      "row": 465
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 72,
+      "row": 465
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 465,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 83,
+      "row": 465
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 78,
+      "row": 465
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 465,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 62,
+      "row": 467
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 57,
+      "row": 467
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 467,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 69,
+      "row": 467
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 64,
+      "row": 467
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 467,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 81,
+      "row": 469
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 76,
+      "row": 469
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 469,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 87,
+      "row": 469
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/fake_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 83,
+      "row": 469
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 469,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 37
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 23
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 42
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 38
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 38,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 173
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 165
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 165,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 24,
+      "row": 192
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 192
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 192,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 209
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 201
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 201,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 24,
+      "row": 228
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 228
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 228,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 248
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 239
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 239,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 24,
+      "row": 273
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 273
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 273,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 295
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 288
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 288,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 77,
+      "row": 300
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 73,
+      "row": 300
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 300,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 24,
+      "row": 307
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 307
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 307,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 14,
+      "row": 327
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 316
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 316,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 81,
+      "row": 344
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 77,
+      "row": 344
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 344,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 80,
+      "row": 349
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 75,
+      "row": 349
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 349,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 24,
+      "row": 354
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 354
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 354,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 42,
+      "row": 368
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/bridges/real_bridge.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 368
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 368,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 62,
+      "row": 93
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/actions.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 93
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 93,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 66,
+      "row": 133
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/actions.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 133
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 133,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 20,
+      "row": 169
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/actions.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 169
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 169,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 24,
+      "row": 221
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/actions.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 221
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 221,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLR0911",
+    "end_location": {
+      "column": 28,
+      "row": 84
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 84
+    },
+    "message": "Too many return statements (7 > 6)",
+    "noqa_row": 84,
+    "url": "https://docs.astral.sh/ruff/rules/too-many-return-statements"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 82,
+      "row": 105
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 105
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 105,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 78,
+      "row": 116
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 116
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 116,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 30,
+      "row": 133
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 130
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 130,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 44,
+      "row": 211
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 211
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 211,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 44,
+      "row": 221
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 221
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 221,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 32,
+      "row": 325
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 24,
+      "row": 325
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 325,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 32,
+      "row": 325
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 24,
+      "row": 325
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 325,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 81,
+      "row": 328
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/elements.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 328
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 328,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 35,
+      "row": 21
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/registry.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 21
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 35,
+      "row": 21
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/registry.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 21
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 26,
+      "row": 39
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/registry.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 39
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 39,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 26,
+      "row": 39
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/registry.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 39
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 39,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 30,
+      "row": 43
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 43
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 43,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 30,
+      "row": 43
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 43
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 43,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 43,
+      "row": 67
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 67
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 67,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 29,
+      "row": 85
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 85
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 85,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 29,
+      "row": 85
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 85
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 85,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 29,
+      "row": 109
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 109
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 109,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 29,
+      "row": 109
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 109
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 109,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 29,
+      "row": 181
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 181
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 181,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 107,
+      "row": 352
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/core/state.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 352
+    },
+    "message": "Line too long (106 > 88)",
+    "noqa_row": 352,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR0912",
+    "end_location": {
+      "column": 19,
+      "row": 21
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 21
+    },
+    "message": "Too many branches (19 > 12)",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/too-many-branches"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 35,
+      "row": 69
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\", \"",
+          "end_location": {
+            "column": 35,
+            "row": 69
+          },
+          "location": {
+            "column": 31,
+            "row": 69
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 31,
+      "row": 69
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 69,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 88,
+      "row": 69
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\"None\"",
+          "end_location": {
+            "column": 88,
+            "row": 69
+          },
+          "location": {
+            "column": 82,
+            "row": 69
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 82,
+      "row": 69
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 69,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "PLR0912",
+    "end_location": {
+      "column": 18,
+      "row": 180
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 180
+    },
+    "message": "Too many branches (17 > 12)",
+    "noqa_row": 180,
+    "url": "https://docs.astral.sh/ruff/rules/too-many-branches"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 35,
+      "row": 231
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\", \"",
+          "end_location": {
+            "column": 35,
+            "row": 231
+          },
+          "location": {
+            "column": 31,
+            "row": 231
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 31,
+      "row": 231
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 231,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 27,
+      "row": 232
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\"...\"",
+          "end_location": {
+            "column": 27,
+            "row": 232
+          },
+          "location": {
+            "column": 22,
+            "row": 232
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 22,
+      "row": 232
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 232,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 55,
+      "row": 232
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 54,
+      "row": 232
+    },
+    "message": "Magic value used in comparison, consider replacing `3` with a constant variable",
+    "noqa_row": 232,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 63,
+      "row": 232
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\"\"",
+          "end_location": {
+            "column": 63,
+            "row": 232
+          },
+          "location": {
+            "column": 61,
+            "row": 232
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 61,
+      "row": 232
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 232,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 55,
+      "row": 281
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 281
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 281,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 26,
+      "row": 316
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 316
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 316,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 26,
+      "row": 316
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 316
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 316,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT001",
+    "end_location": {
+      "column": 47,
+      "row": 316
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 42,
+      "row": 316
+    },
+    "message": "Boolean-typed positional argument in function definition",
+    "noqa_row": 316,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-type-hint-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 47,
+      "row": 316
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 42,
+      "row": 316
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 316,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 157,
+      "row": 378
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 378
+    },
+    "message": "Line too long (156 > 88)",
+    "noqa_row": 379,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 102,
+      "row": 414
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/cli.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 414
+    },
+    "message": "Line too long (101 > 88)",
+    "noqa_row": 414,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 75,
+      "row": 122
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 122
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 122,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 57,
+      "row": 153
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 153
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 153,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 96,
+      "row": 202
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 202
+    },
+    "message": "Line too long (95 > 88)",
+    "noqa_row": 202,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 84,
+      "row": 206
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 206
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 206,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 90,
+      "row": 235
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 235
+    },
+    "message": "Line too long (89 > 88)",
+    "noqa_row": 235,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 93,
+      "row": 292
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 292
+    },
+    "message": "Line too long (92 > 88)",
+    "noqa_row": 292,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 307
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 307
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 307,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 353
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 353
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 353,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 386
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 386
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 386,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 105,
+      "row": 404
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 404
+    },
+    "message": "Line too long (104 > 88)",
+    "noqa_row": 409,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 91,
+      "row": 440
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 440
+    },
+    "message": "Line too long (90 > 88)",
+    "noqa_row": 440,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 493
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 493
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 493,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 93,
+      "row": 532
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 532
+    },
+    "message": "Line too long (92 > 88)",
+    "noqa_row": 532,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 569
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 569
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 569,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "TRY300",
+    "end_location": {
+      "column": 22,
+      "row": 602
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 602
+    },
+    "message": "Consider moving this statement to an `else` block",
+    "noqa_row": 602,
+    "url": "https://docs.astral.sh/ruff/rules/try-consider-else"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 93,
+      "row": 637
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/interfaces/mcp_server.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 637
+    },
+    "message": "Line too long (92 > 88)",
+    "noqa_row": 637,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 31,
+      "row": 89
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 89
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 89,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 32,
+      "row": 90
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 90
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 90,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 33,
+      "row": 134
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 134
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 134,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 34,
+      "row": 145
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 145
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 145,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 34,
+      "row": 146
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 146
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 146,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 35,
+      "row": 147
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 147
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 147,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 36,
+      "row": 148
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 148
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 148,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 34,
+      "row": 168
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 168
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 168,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 31,
+      "row": 169
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 26,
+      "row": 169
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 169,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 32,
+      "row": 268
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/models/types.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 268
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 268,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 74,
+      "row": 87
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/selectors/jsonpath.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 87
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 87,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 70,
+      "row": 92
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/selectors/jsonpath.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 92
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 92,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 94,
+      "row": 143
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/selectors/jsonpath.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 143
+    },
+    "message": "Line too long (93 > 88)",
+    "noqa_row": 143,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 107,
+      "row": 245
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/src/macos_ui_automation/selectors/jsonpath.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 245
+    },
+    "message": "Line too long (106 > 88)",
+    "noqa_row": 245,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 99,
+      "row": 64
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_factory.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 64
+    },
+    "message": "Line too long (98 > 88)",
+    "noqa_row": 64,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 33,
+      "row": 59
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 16,
+      "row": 59
+    },
+    "message": "Private member accessed: `_cf_type_id`",
+    "noqa_row": 59,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 44,
+      "row": 59
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 39,
+      "row": 59
+    },
+    "message": "Magic value used in comparison, consider replacing `12345` with a constant variable",
+    "noqa_row": 59,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 35,
+      "row": 81
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 16,
+      "row": 81
+    },
+    "message": "Private member accessed: `_cf_type_id`",
+    "noqa_row": 81,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 46,
+      "row": 81
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 41,
+      "row": 81
+    },
+    "message": "Magic value used in comparison, consider replacing `54321` with a constant variable",
+    "noqa_row": 81,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 41,
+      "row": 89
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 40,
+      "row": 89
+    },
+    "message": "Magic value used in comparison, consider replacing `2` with a constant variable",
+    "noqa_row": 89,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 31,
+      "row": 108
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 108
+    },
+    "message": "Magic value used in comparison, consider replacing `1234` with a constant variable",
+    "noqa_row": 108,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 141
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 141
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 141,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 149
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 149
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 149,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 159
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 159
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 159,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 168
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 168
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 168,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 176
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 176
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 176,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 190
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 190
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 190,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 45,
+      "row": 197
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 197
+    },
+    "message": "Private member accessed: `_applications`",
+    "noqa_row": 197,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "SLF001",
+    "end_location": {
+      "column": 55,
+      "row": 228
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 228
+    },
+    "message": "Private member accessed: `_elements`",
+    "noqa_row": 228,
+    "url": "https://docs.astral.sh/ruff/rules/private-member-access"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 27,
+      "row": 300
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/bridges/test_fake.py",
+    "fix": null,
+    "location": {
+      "column": 23,
+      "row": 300
+    },
+    "message": "Magic value used in comparison, consider replacing `5555` with a constant variable",
+    "noqa_row": 300,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 34,
+      "row": 125
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_elements.py",
+    "fix": null,
+    "location": {
+      "column": 33,
+      "row": 125
+    },
+    "message": "Magic value used in comparison, consider replacing `2` with a constant variable",
+    "noqa_row": 125,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 42,
+      "row": 152
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_elements.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 152
+    },
+    "message": "Magic value used in comparison, consider replacing `1234` with a constant variable",
+    "noqa_row": 152,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 100,
+      "row": 199
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_elements.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 199
+    },
+    "message": "Line too long (99 > 88)",
+    "noqa_row": 199,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 37,
+      "row": 75
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_state.py",
+    "fix": null,
+    "location": {
+      "column": 36,
+      "row": 75
+    },
+    "message": "Magic value used in comparison, consider replacing `2` with a constant variable",
+    "noqa_row": 75,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 108,
+      "row": 151
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_state.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 151
+    },
+    "message": "Line too long (107 > 88)",
+    "noqa_row": 151,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 31,
+      "row": 152
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_state.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 152
+    },
+    "message": "Magic value used in comparison, consider replacing `5` with a constant variable",
+    "noqa_row": 152,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 37,
+      "row": 155
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_state.py",
+    "fix": null,
+    "location": {
+      "column": 36,
+      "row": 155
+    },
+    "message": "Magic value used in comparison, consider replacing `2` with a constant variable",
+    "noqa_row": 155,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 39,
+      "row": 197
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/core/test_state.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 197
+    },
+    "message": "Magic value used in comparison, consider replacing `4` with a constant variable",
+    "noqa_row": 197,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 73,
+      "row": 25
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 69,
+      "row": 25
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 25,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 80,
+      "row": 25
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 75,
+      "row": 25
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 25,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 75,
+      "row": 27
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 70,
+      "row": 27
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 82,
+      "row": 27
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 77,
+      "row": 27
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 75,
+      "row": 28
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 70,
+      "row": 28
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 28,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "FBT003",
+    "end_location": {
+      "column": 82,
+      "row": 28
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 77,
+      "row": 28
+    },
+    "message": "Boolean positional value in function call",
+    "noqa_row": 28,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-positional-value-in-call"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 90,
+      "row": 105
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 105
+    },
+    "message": "Line too long (89 > 88)",
+    "noqa_row": 105,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 282,
+      "row": 112
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 112
+    },
+    "message": "Line too long (281 > 88)",
+    "noqa_row": 112,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "FBT002",
+    "end_location": {
+      "column": 69,
+      "row": 463
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/fixtures/task_management_system.py",
+    "fix": null,
+    "location": {
+      "column": 60,
+      "row": 463
+    },
+    "message": "Boolean default positional argument in function definition",
+    "noqa_row": 463,
+    "url": "https://docs.astral.sh/ruff/rules/boolean-default-value-positional-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 62,
+      "row": 57
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 57
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 57,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 91,
+      "row": 79
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 79
+    },
+    "message": "Line too long (90 > 88)",
+    "noqa_row": 79,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 35,
+      "row": 88
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 88
+    },
+    "message": "Magic value used in comparison, consider replacing `3` with a constant variable",
+    "noqa_row": 88,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 41,
+      "row": 95
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 36,
+      "row": 95
+    },
+    "message": "Magic value used in comparison, consider replacing `84054` with a constant variable",
+    "noqa_row": 95,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 93,
+      "row": 113
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 113
+    },
+    "message": "Line too long (92 > 88)",
+    "noqa_row": 113,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 98,
+      "row": 115
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 115
+    },
+    "message": "Line too long (97 > 88)",
+    "noqa_row": 115,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 39,
+      "row": 120
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 120
+    },
+    "message": "Magic value used in comparison, consider replacing `7` with a constant variable",
+    "noqa_row": 120,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 105,
+      "row": 133
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 133
+    },
+    "message": "Line too long (104 > 88)",
+    "noqa_row": 133,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 38,
+      "row": 138
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 138
+    },
+    "message": "Magic value used in comparison, consider replacing `5` with a constant variable",
+    "noqa_row": 138,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 38,
+      "row": 167
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 167
+    },
+    "message": "Magic value used in comparison, consider replacing `5` with a constant variable",
+    "noqa_row": 167,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 90,
+      "row": 176
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 176
+    },
+    "message": "Line too long (89 > 88)",
+    "noqa_row": 176,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 118,
+      "row": 182
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 182
+    },
+    "message": "Line too long (117 > 88)",
+    "noqa_row": 182,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 99,
+      "row": 187
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 187
+    },
+    "message": "Line too long (98 > 88)",
+    "noqa_row": 187,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 123,
+      "row": 201
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 201
+    },
+    "message": "Line too long (122 > 88)",
+    "noqa_row": 201,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 102,
+      "row": 205
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/integration/test_mcp_integration.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 205
+    },
+    "message": "Line too long (101 > 88)",
+    "noqa_row": 205,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 28,
+      "row": 25
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 25
+    },
+    "message": "Magic value used in comparison, consider replacing `100` with a constant variable",
+    "noqa_row": 25,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 28,
+      "row": 26
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 26
+    },
+    "message": "Magic value used in comparison, consider replacing `200` with a constant variable",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 27,
+      "row": 40
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 40
+    },
+    "message": "Magic value used in comparison, consider replacing `25` with a constant variable",
+    "noqa_row": 40,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 27,
+      "row": 41
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 41
+    },
+    "message": "Magic value used in comparison, consider replacing `30` with a constant variable",
+    "noqa_row": 41,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 28,
+      "row": 46
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 46
+    },
+    "message": "Magic value used in comparison, consider replacing `-10` with a constant variable",
+    "noqa_row": 46,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 28,
+      "row": 47
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 47
+    },
+    "message": "Magic value used in comparison, consider replacing `-20` with a constant variable",
+    "noqa_row": 47,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 27,
+      "row": 52
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 52
+    },
+    "message": "Magic value used in comparison, consider replacing `10` with a constant variable",
+    "noqa_row": 52,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 27,
+      "row": 53
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 53
+    },
+    "message": "Magic value used in comparison, consider replacing `20` with a constant variable",
+    "noqa_row": 53,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 33,
+      "row": 62
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 62
+    },
+    "message": "Magic value used in comparison, consider replacing `800` with a constant variable",
+    "noqa_row": 62,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 34,
+      "row": 63
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 63
+    },
+    "message": "Magic value used in comparison, consider replacing `600` with a constant variable",
+    "noqa_row": 63,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 36,
+      "row": 81
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 81
+    },
+    "message": "Magic value used in comparison, consider replacing `999999` with a constant variable",
+    "noqa_row": 81,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 37,
+      "row": 82
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 82
+    },
+    "message": "Magic value used in comparison, consider replacing `999999` with a constant variable",
+    "noqa_row": 82,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 41,
+      "row": 114
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 114
+    },
+    "message": "Magic value used in comparison, consider replacing `100` with a constant variable",
+    "noqa_row": 114,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 40,
+      "row": 115
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 115
+    },
+    "message": "Magic value used in comparison, consider replacing `80` with a constant variable",
+    "noqa_row": 115,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 39,
+      "row": 157
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 36,
+      "row": 157
+    },
+    "message": "Magic value used in comparison, consider replacing `123` with a constant variable",
+    "noqa_row": 157,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 42,
+      "row": 251
+    },
+    "filename": "/Users/moshechen/workspace/macos-ui-automation-mcp/tests/models/test_types.py",
+    "fix": null,
+    "location": {
+      "column": 41,
+      "row": 251
+    },
+    "message": "Magic value used in comparison, consider replacing `2` with a constant variable",
+    "noqa_row": 251,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  }
+]

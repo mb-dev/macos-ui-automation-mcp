@@ -69,7 +69,7 @@ def main():
         log_debug(f"Current sys.path: {sys.path}")
         traceback.print_exc(file=sys.stderr)
         sys.exit(1)
-    except Exception as e:  # noqa: BLE001
+    except Exception as e:
         log_debug(f"Unexpected error: {e}")
         traceback.print_exc(file=sys.stderr)
         sys.exit(1)

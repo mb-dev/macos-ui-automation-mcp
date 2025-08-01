@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Command-line interface for macOS UI Automation.
 
@@ -12,10 +12,18 @@ import logging
 import sys
 from pathlib import Path
 
+from ApplicationServices import AXIsProcessTrusted
+
 from macos_ui_automation import JSONPathSelector
 from macos_ui_automation.core.actions import UIActions
 from macos_ui_automation.core.state import SystemStateDumper
 from macos_ui_automation.models.types import SystemState, UIElement
+
+# Constants
+DEFAULT_TIMEOUT_SECONDS = 30.0
+MENU_BAR_TIMEOUT_DEFAULT = 2.0
+QUICK_DUMP_TIMEOUT = 5.0
+MAX_ACTIONS_PREVIEW = 3
 
 
 def action_command(args: argparse.Namespace) -> None:
@@ -66,9 +74,10 @@ def action_command(args: argparse.Namespace) -> None:
                     print("❌ Click failed!")
             else:
                 print("⚠️ Element is not clickable")
-                print(
-                    f"Available actions: {', '.join(element.actions) if element.actions else 'None'}"
+                actions_str = (
+                    ", ".join(element.actions) if element.actions else "None"
                 )
+                print(f"Available actions: {actions_str}")
 
         elif args.action == "set_value":
             if not args.value:
@@ -98,7 +107,9 @@ def action_command(args: argparse.Namespace) -> None:
         else:
             print(f"❌ Unknown action: {args.action}")
 
-    print(f"\n🏁 Action completed on {success_count}/{len(elements)} element(s)")
+    print(
+        f"\n🏁 Action completed on {success_count}/{len(elements)} element(s)"
+    )
 
 
 def dump_system_state(args: argparse.Namespace) -> None:
@@ -229,9 +240,9 @@ def find_elements(args: argparse.Namespace) -> None:
         if element.position:
             print(f"Position: ({element.position.x}, {element.position.y})")
         if element.actions:
-            print(
-                f"Actions: {', '.join(element.actions[:3])}{'...' if len(element.actions) > 3 else ''}"
-            )
+            actions_preview = ", ".join(element.actions[:MAX_ACTIONS_PREVIEW])
+            suffix = "..." if len(element.actions) > MAX_ACTIONS_PREVIEW else ""
+            print(f"Actions: {actions_preview}{suffix}")
 
 
 def info_command(args: argparse.Namespace) -> None:
@@ -268,7 +279,8 @@ def info_command(args: argparse.Namespace) -> None:
         windows_count = len(proc.windows)
         menu_count = len(proc.menu_bar)
         print(
-            f"{status} {proc.name} (PID: {proc.pid}) - {windows_count} windows, {menu_count} menu items"
+            f"{status} {proc.name} (PID: {proc.pid}) - "
+            f"{windows_count} windows, {menu_count} menu items"
         )
 
 
@@ -278,21 +290,22 @@ def test_accessibility(args: argparse.Namespace) -> None:
     if hasattr(args, "verbose") and args.verbose:
         print("🔍 Running in verbose mode...")
 
-    from ApplicationServices import AXIsProcessTrusted
-
     if AXIsProcessTrusted():
         print("✅ Accessibility permissions are granted")
     else:
         print("❌ Accessibility permissions are NOT granted")
         print("💡 Please enable accessibility permissions in System Preferences")
         print(
-            "   Go to: System Preferences > Security & Privacy > Privacy > Accessibility"
+            "   Go to: System Preferences > Security & Privacy > "
+            "Privacy > Accessibility"
         )
         sys.exit(1)
 
     # Test basic dumping functionality
     print("🧪 Testing basic system state dumping...")
-    dumper = SystemStateDumper(timeout_seconds=5.0)  # Quick dump for speed
+    dumper = SystemStateDumper(
+        timeout_seconds=QUICK_DUMP_TIMEOUT
+    )  # Quick dump for speed
     system_state = dumper.dump_system_state()
 
     print(f"✅ Successfully captured {len(system_state.processes)} processes")
@@ -312,7 +325,7 @@ def test_accessibility(args: argparse.Namespace) -> None:
     print("\n🎉 All accessibility tests passed!")
 
 
-def setup_logging(verbose: bool = False, debug: bool = False) -> None:
+def setup_logging(*, verbose: bool = False, debug: bool = False) -> None:
     """Setup logging configuration for the CLI."""
     if debug:
         level = logging.DEBUG
@@ -346,7 +359,8 @@ Examples:
   python -m macos_ui_automation.cli dump --timeout-seconds 60 --output state.json
 
   # Dump only specific processes
-  python -m macos_ui_automation.cli dump --include-processes "Safari,Finder,GlobalProtect"
+  python -m macos_ui_automation.cli dump --include-processes \\
+    "Safari,Finder,TextEdit"
 
   # Query elements with JSONPath
   python -m macos_ui_automation.cli query "$.processes[*].windows[*].title"
@@ -364,13 +378,18 @@ Examples:
   python -m macos_ui_automation.cli test
 
   # Perform actions on elements using JSONPath
-  python -m macos_ui_automation.cli action "$.processes[?@.name=='GlobalProtect'].menu_bar[*]" click --input state.json
+  python -m macos_ui_automation.cli action \\
+    "$.processes[?@.name=='Safari'].menu_bar[*]" click --input state.json
 
   # Click on a specific menu item
-  python -m macos_ui_automation.cli action "$.processes[?@.name=='GlobalProtect'].menu_bar[*].children[?@.title=='Connect']" click
+  python -m macos_ui_automation.cli action \\
+    "$.processes[?@.name=='Safari'].menu_bar[*].children[?@.title=='File']" \\
+    click
 
   # Set value of a text field
-  python -m macos_ui_automation.cli action "$.processes[*].windows[*]..children[?@.role=='AXTextField' && @.title=='Username']" set_value --value "john.doe"
+  python -m macos_ui_automation.cli action \\
+    "$.processes[*].windows[*]..children[?@.role=='AXTextField' && " \\
+    "@.title=='Username']" set_value --value "john.doe"
         """,
     )
 
@@ -399,14 +418,15 @@ Examples:
     dump_parser.add_argument(
         "--timeout-seconds",
         type=float,
-        default=30.0,
+        default=DEFAULT_TIMEOUT_SECONDS,
         help="Maximum time to spend traversing UI hierarchy in seconds (default: 30)",
     )
     dump_parser.add_argument(
         "--menu-bar-timeout",
         type=float,
-        default=2.0,
-        help="Maximum time for menu bar traversal in seconds (default: 2 to avoid triggering menus)",
+        default=MENU_BAR_TIMEOUT_DEFAULT,
+        help="Maximum time for menu bar traversal in seconds "
+        "(default: 2 to avoid triggering menus)",
     )
     dump_parser.add_argument(
         "--include-processes", help="Comma-separated list of process names to include"
@@ -487,7 +507,7 @@ Examples:
     action_parser.add_argument(
         "--timeout-seconds",
         type=float,
-        default=30.0,
+        default=DEFAULT_TIMEOUT_SECONDS,
         help="Maximum time for live capture in seconds (default: 30)",
     )
     add_common_args(action_parser)

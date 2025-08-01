@@ -31,6 +31,16 @@ from macos_ui_automation.selectors.jsonpath import JSONPathSelector
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Constants
+DEFAULT_SEARCH_TIMEOUT = 10.0
+APP_SPECIFIC_TIMEOUT = 15.0
+QUICK_OVERVIEW_TIMEOUT = 5.0
+DEEP_SEARCH_TIMEOUT = 20.0
+STATE_COLLECTION_TIMEOUT = 5.0
+OVERVIEW_TIMEOUT = 5.0
+PERMISSION_CHECK_TIMEOUT = 5.0
+MAX_WINDOWS_IN_OVERVIEW = 3
+
 # Create MCP server
 mcp = FastMCP("macOS UI Automation Server")
 
@@ -41,7 +51,9 @@ def get_current_ui_state() -> str:
     """Get current UI overview for all running applications (shallow depth)."""
     try:
         # Shallow depth for overview - just show apps, windows, main elements
-        dumper = SystemStateDumper(timeout_seconds=10.0, only_visible_children=True)
+        dumper = SystemStateDumper(
+            timeout_seconds=DEFAULT_SEARCH_TIMEOUT, only_visible_children=True
+        )
         state = dumper.dump_system_state()
         return state.model_dump_json(indent=2)
     except Exception as e:
@@ -54,7 +66,9 @@ def get_process_ui_state(process_name: str) -> str:
     """Get deep UI state for a specific process/application."""
     try:
         # Deep depth for specific app - capture all nested elements for searching
-        dumper = SystemStateDumper(timeout_seconds=15.0, only_visible_children=True)
+        dumper = SystemStateDumper(
+            timeout_seconds=APP_SPECIFIC_TIMEOUT, only_visible_children=True
+        )
         state = dumper.dump_system_state(include_processes=[process_name])
 
         if not state.processes:
@@ -70,7 +84,7 @@ def get_process_ui_state(process_name: str) -> str:
 
 # Tools - Actions that can be performed
 @mcp.tool()
-def click_by_accessibility_id(jsonpath_selector: str) -> str:
+def click_element_by_selector(jsonpath_selector: str) -> str:
     """Click a UI element using accessibility actions (AXPress) via JSONPath selector.
 
     Args:
@@ -84,8 +98,10 @@ def click_by_accessibility_id(jsonpath_selector: str) -> str:
         logger.info("Attempting to click element: %s", jsonpath_selector)
 
         # Get current UI state with timeout for click operations
-        dumper = SystemStateDumper(timeout_seconds=10.0, only_visible_children=True)
-        state = dumper.dump_system_state_with_timeout(5.0)
+        dumper = SystemStateDumper(
+            timeout_seconds=DEFAULT_SEARCH_TIMEOUT, only_visible_children=True
+        )
+        state = dumper.dump_system_state_with_timeout(STATE_COLLECTION_TIMEOUT)
 
         # Find element using selector - use the existing find_elements method
         selector = JSONPathSelector(state)
@@ -117,7 +133,9 @@ def click_by_accessibility_id(jsonpath_selector: str) -> str:
             logger.info(
                 "Successfully clicked element: %s", element.title or element.role
             )
-            return f"Successfully clicked element: {element.title or element.role}"
+            return (
+                f"Successfully clicked element: {element.title or element.role}"
+            )
         logger.error("Failed to click element: %s", element.title or element.role)
         return f"Failed to click element: {element.title or element.role}"
 
@@ -141,7 +159,9 @@ def click_at_position(x: int, y: int) -> str:
         logger.info("Attempting to click at position (%d, %d)", x, y)
 
         # Get a dumper instance for UIActions
-        dumper = SystemStateDumper(timeout_seconds=5.0, only_visible_children=True)
+        dumper = SystemStateDumper(
+            timeout_seconds=STATE_COLLECTION_TIMEOUT, only_visible_children=True
+        )
         ui_actions = UIActions(dumper)
 
         success = ui_actions.click_at_position(x, y)
@@ -172,8 +192,10 @@ def type_text_to_element_by_selector(jsonpath_selector: str, text: str) -> str:
         logger.info("Attempting to type into element: %s", jsonpath_selector)
 
         # Get current UI state with timeout for type operations
-        dumper = SystemStateDumper(timeout_seconds=10.0, only_visible_children=True)
-        state = dumper.dump_system_state_with_timeout(5.0)
+        dumper = SystemStateDumper(
+            timeout_seconds=DEFAULT_SEARCH_TIMEOUT, only_visible_children=True
+        )
+        state = dumper.dump_system_state_with_timeout(STATE_COLLECTION_TIMEOUT)
 
         # Find element using selector - use the existing find_elements method
         selector = JSONPathSelector(state)
@@ -199,11 +221,16 @@ def type_text_to_element_by_selector(jsonpath_selector: str, text: str) -> str:
                 "Successfully typed text into element: %s",
                 element.title or element.role,
             )
-            return f"Successfully typed '{text}' into element: {element.title or element.role}"
+            return (
+                f"Successfully typed '{text}' into element: "
+                f"{element.title or element.role}"
+            )
         logger.error(
             "Failed to type text into element: %s", element.title or element.role
         )
-        return f"Failed to type text into element: {element.title or element.role}"
+        return (
+            f"Failed to type text into element: {element.title or element.role}"
+        )
 
     except Exception as e:
         logger.exception("Type text failed: %s")
@@ -212,7 +239,7 @@ def type_text_to_element_by_selector(jsonpath_selector: str, text: str) -> str:
 
 @mcp.tool()
 def find_elements(
-    jsonpath_selector: str, timeout_seconds: float = 10.0
+    jsonpath_selector: str, timeout_seconds: float = DEFAULT_SEARCH_TIMEOUT
 ) -> list[dict[str, Any]]:
     """Find UI elements matching a JSONPath selector.
 
@@ -232,20 +259,21 @@ def find_elements(
         start_time = time.time()
 
         # Get current UI state with time-aware dumper
-        # Use longer timeout for app-specific searches since they need to traverse deeper
+        # Use longer timeout for app-specific searches since they need to
+        # traverse deeper
         if any(
             pattern in jsonpath_selector.lower()
             for pattern in [".processes[", "name==", "bundle_id=="]
         ):
             # App-specific search - use longer timeout for deep traversal
-            search_timeout = min(timeout_seconds - 1.0, 20.0)
+            search_timeout = min(timeout_seconds - 1.0, DEEP_SEARCH_TIMEOUT)
             logger.info(
                 "Using extended timeout (%.1fs) for app-specific selector",
                 search_timeout,
             )
         else:
             # General search - use moderate timeout
-            search_timeout = min(timeout_seconds - 1.0, 10.0)
+            search_timeout = min(timeout_seconds - 1.0, DEFAULT_SEARCH_TIMEOUT)
             logger.info(
                 "Using moderate timeout (%.1fs) for general selector", search_timeout
             )
@@ -262,7 +290,9 @@ def find_elements(
         if elapsed >= timeout_seconds:
             logger.warning("Search timed out during state dump (%.2fs)", elapsed)
             error_response = ErrorResponse(
-                error=f"Search timed out during state collection ({elapsed:.2f}s)",
+                error=(
+                    f"Search timed out during state collection ({elapsed:.2f}s)"
+                ),
                 timeout=True,
             )
             return [error_response.model_dump()]
@@ -289,7 +319,8 @@ def find_elements(
                 break
 
             if isinstance(raw_element, dict):
-                # Handle UI elements (have role) vs other objects (processes, windows, etc.)
+                # Handle UI elements (have role) vs other objects
+                # (processes, windows, etc.)
                 if "role" in raw_element:
                     # This is a UI element, use SearchResult
                     search_result = SearchResult.from_dict(raw_element)
@@ -326,8 +357,10 @@ def get_element_details(jsonpath_selector: str) -> dict[str, Any]:
         logger.info("Getting element details for: %s", jsonpath_selector)
 
         # Get current UI state with timeout for detail operations
-        dumper = SystemStateDumper(timeout_seconds=10.0, only_visible_children=True)
-        state = dumper.dump_system_state_with_timeout(5.0)
+        dumper = SystemStateDumper(
+            timeout_seconds=DEFAULT_SEARCH_TIMEOUT, only_visible_children=True
+        )
+        state = dumper.dump_system_state_with_timeout(STATE_COLLECTION_TIMEOUT)
 
         # Find element using selector - use the existing find_elements method
         selector = JSONPathSelector(state)
@@ -395,13 +428,14 @@ def list_running_applications() -> list[dict[str, Any]]:
 def find_elements_in_app(
     app_name: str,
     jsonpath_selector: str = "$..[?(@.ax_identifier)]",
-    timeout_seconds: float = 15.0,
+    timeout_seconds: float = APP_SPECIFIC_TIMEOUT,
 ) -> list[dict[str, Any]]:
     """Find UI elements within a specific application using deep search.
 
     Args:
         app_name: Name of the application to search within
-        jsonpath_selector: JSONPath expression to find elements (default: all elements with identifiers)
+        jsonpath_selector: JSONPath expression to find elements
+            (default: all elements with identifiers)
         timeout_seconds: Maximum time to spend searching (default: 15 seconds)
 
     Returns:
@@ -417,7 +451,7 @@ def find_elements_in_app(
         start_time = time.time()
 
         # Use extended timeout for deep app-specific searches
-        search_timeout = min(timeout_seconds - 1.0, 20.0)
+        search_timeout = min(timeout_seconds - 1.0, DEEP_SEARCH_TIMEOUT)
         logger.info(
             "Using extended timeout (%.1fs) for app-specific search", search_timeout
         )
@@ -437,7 +471,9 @@ def find_elements_in_app(
             logger.warning("Search timed out during state dump (%.2fs)", elapsed)
             return [
                 {
-                    "error": f"Search timed out during state collection ({elapsed:.2f}s)",
+                    "error": (
+                        f"Search timed out during state collection ({elapsed:.2f}s)"
+                    ),
                     "timeout": True,
                 }
             ]
@@ -498,7 +534,9 @@ def find_elements_in_app(
 
 
 @mcp.tool()
-def get_app_overview(timeout_seconds: float = 5.0) -> list[dict[str, Any]]:
+def get_app_overview(
+    timeout_seconds: float = QUICK_OVERVIEW_TIMEOUT,
+) -> list[dict[str, Any]]:
     """Get a quick overview of all running applications with shallow UI inspection.
 
     Args:
@@ -512,7 +550,7 @@ def get_app_overview(timeout_seconds: float = 5.0) -> list[dict[str, Any]]:
         start_time = time.time()
 
         # Use short timeout for quick overview
-        overview_timeout = min(timeout_seconds - 0.5, 5.0)
+        overview_timeout = min(timeout_seconds - 0.5, OVERVIEW_TIMEOUT)
         logger.info("Using short timeout (%ss) for app overview", overview_timeout)
 
         # Get current UI state with time-aware dumper
@@ -529,7 +567,9 @@ def get_app_overview(timeout_seconds: float = 5.0) -> list[dict[str, Any]]:
             logger.warning("Overview timed out during state dump (%.2fs)", elapsed)
             return [
                 {
-                    "error": f"Overview timed out during state collection ({elapsed:.2f}s)",
+                    "error": (
+                        f"Overview timed out during state collection ({elapsed:.2f}s)"
+                    ),
                     "timeout": True,
                 }
             ]
@@ -549,7 +589,7 @@ def get_app_overview(timeout_seconds: float = 5.0) -> list[dict[str, Any]]:
             }
 
             # Add basic window info
-            for window in process.windows[:3]:  # Limit to first 3 windows for overview
+            for window in process.windows[:MAX_WINDOWS_IN_OVERVIEW]:
                 window_info = {
                     "title": window.title,
                     "position": window.position,
@@ -596,9 +636,9 @@ def check_accessibility_permissions() -> dict[str, Any]:
                 "Security & Privacy > Privacy > Accessibility"
             )
             logger.warning("Accessibility permissions not granted")
-        else:
-            logger.info("Accessibility permissions are properly configured")
+            return result
 
+        logger.info("Accessibility permissions are properly configured")
         return result
 
     except Exception as e:
@@ -621,7 +661,10 @@ def main() -> None:
         help="Transport protocol to use (default: stdio)",
     )
     parser.add_argument(
-        "--port", type=int, default=3000, help="Port for HTTP transport (default: 3000)"
+        "--port",
+        type=int,
+        default=3000,
+        help="Port for HTTP transport (default: 3000)",
     )
 
     args = parser.parse_args()
@@ -634,7 +677,8 @@ def main() -> None:
         logger.setLevel(logging.DEBUG)
 
         debug_formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s"
+            "%(asctime)s - %(name)s - %(levelname)s - "
+            "%(funcName)s:%(lineno)d - %(message)s"
         )
         for handler in logging.getLogger().handlers:
             handler.setFormatter(debug_formatter)

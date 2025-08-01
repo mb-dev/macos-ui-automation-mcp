@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Pytest integration example for macOS UI automation testing.
 
@@ -15,6 +14,14 @@ from macos_ui_automation import JSONPathSelector, SystemStateDumper, UIActions
 
 if TYPE_CHECKING:
     from macos_ui_automation.core.models import SystemState
+
+
+# Constants for test thresholds
+MIN_EXPECTED_PROCESSES = 5
+MIN_CALCULATOR_BUTTONS = 10
+MAX_STATE_CAPTURE_TIME = 5.0
+MAX_SEARCH_TIME = 2.0
+MAX_TIMEOUT_TOLERANCE = 4.0
 
 
 class UITestFixture:
@@ -141,15 +148,16 @@ class TestUIAutomation:
         """Test finding running applications."""
         # Should have at least some applications running
         processes = ui_fixture.system_state.processes
-        assert len(processes) >= 5, (
-            f"Expected at least 5 processes, found {len(processes)}"
+        assert len(processes) >= MIN_EXPECTED_PROCESSES, (
+            f"Expected at least {MIN_EXPECTED_PROCESSES} processes, "
+            f"found {len(processes)}"
         )
 
         # Should have at least one frontmost application
         frontmost_apps = [p for p in processes if p.frontmost]
-        assert len(frontmost_apps) >= 1, (
-            "Should have at least one frontmost application"
-        )
+        assert (
+            len(frontmost_apps) >= 1
+        ), "Should have at least one frontmost application"
 
     def test_find_ui_elements(self, ui_fixture):
         """Test finding basic UI elements."""
@@ -180,7 +188,8 @@ class TestUIAutomation:
             # Check position and size if available
             if button.get("position"):
                 pos = button["position"]
-                assert "x" in pos and "y" in pos, "Position should have x,y coordinates"
+                assert "x" in pos, "Position should have x coordinate"
+                assert "y" in pos, "Position should have y coordinate"
                 assert isinstance(pos["x"], int | float), (
                     "X coordinate should be numeric"
                 )
@@ -234,8 +243,9 @@ class TestCalculatorApp:
         # Calculator should have number buttons (0-9) and operation buttons
         # Note: Actual count may vary by macOS version
         if calc_buttons:
-            assert len(calc_buttons) >= 10, (
-                f"Calculator should have at least 10 buttons, found {len(calc_buttons)}"
+            assert len(calc_buttons) >= MIN_CALCULATOR_BUTTONS, (
+                f"Calculator should have at least {MIN_CALCULATOR_BUTTONS} buttons, "
+                f"found {len(calc_buttons)}"
             )
 
             # Check that buttons have proper properties
@@ -265,7 +275,7 @@ class TestCalculatorApp:
             "$..[?(@.role=='AXButton' && @.title=='1')]"
         )
 
-        # Click it (commented out for safety)
+        # Note: Clicking disabled for safety - would use:
         # calculator_fixture.actions.click(one_button)
 
         # Find the "+" button
@@ -273,7 +283,7 @@ class TestCalculatorApp:
             "$..[?(@.role=='AXButton' && @.title=='+')]"
         )
 
-        # Click it (commented out for safety)
+        # Note: Clicking disabled for safety - would use:
         # calculator_fixture.actions.click(plus_button)
 
         # Verify result display updated
@@ -292,8 +302,9 @@ class TestUITiming:
         shallow_state = shallow_dumper.dump_system_state()
 
         shallow_time = time.time() - start_time
-        assert shallow_time < 5.0, (
-            f"Shallow capture should be under 5s, took {shallow_time:.2f}s"
+        assert shallow_time < MAX_STATE_CAPTURE_TIME, (
+            f"Shallow capture should be under {MAX_STATE_CAPTURE_TIME}s, "
+            f"took {shallow_time:.2f}s"
         )
         assert len(shallow_state.processes) > 0, "Should capture some processes"
 
@@ -305,8 +316,9 @@ class TestUITiming:
         ui_fixture.find_elements("$..[?(@.role=='AXButton')]")
 
         search_time = time.time() - start_time
-        assert search_time < 2.0, (
-            f"Button search should be under 2s, took {search_time:.2f}s"
+        assert search_time < MAX_SEARCH_TIME, (
+            f"Button search should be under {MAX_SEARCH_TIME}s, "
+            f"took {search_time:.2f}s"
         )
 
     def test_timeout_handling(self):
@@ -319,11 +331,15 @@ class TestUITiming:
         try:
             deep_dumper.dump_system_state_with_timeout(timeout_seconds=3.0)
             elapsed = time.time() - start_time
-            assert elapsed <= 4.0, f"Should respect timeout, took {elapsed:.2f}s"
-        except Exception:
+            assert elapsed <= MAX_TIMEOUT_TOLERANCE, (
+                f"Should respect timeout, took {elapsed:.2f}s"
+            )
+        except TimeoutError:
             # Timeout exceptions are acceptable
             elapsed = time.time() - start_time
-            assert elapsed <= 4.0, f"Should timeout gracefully, took {elapsed:.2f}s"
+            assert elapsed <= MAX_TIMEOUT_TOLERANCE, (
+                f"Should timeout gracefully, took {elapsed:.2f}s"
+            )
 
 
 # Custom pytest markers for different test categories
