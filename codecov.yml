@@ -1,0 +1,21 @@
+# Codecov configuration
+coverage:
+  status:
+    project:
+      default:
+        target: 85%
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+        threshold: 2%
+
+comment:
+  layout: "diff, flags, files"
+  behavior: default
+  require_changes: false
+
+ignore:
+  - "tests/"
+  - "examples/"
+  - "**/__init__.py"
