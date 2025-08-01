@@ -1,0 +1,107 @@
+[project]
+name = "macos-ui-automation-mcp"
+version = "0.1.0"
+description = "MCP server for macOS UI automation with Claude Desktop/Code integration, plus Python library and CLI interfaces"
+authors = [{name = "mochen"}]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["mcp", "macos", "automation", "ui", "accessibility", "claude", "jsonpath"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers", 
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Desktop Environment :: Window Managers"
+]
+dependencies = [
+    "pydantic>=2.10.0",
+    "python-jsonpath>=1.0.0",
+    "pyobjc-core>=10.0",
+    "pyobjc-framework-cocoa>=10.0",
+    "pyobjc-framework-applicationservices>=10.0",
+    "typing-extensions>=4.0.0",
+    "mcp[cli]>=1.0.0",
+]
+
+
+[project.scripts]
+macos-ui-automation = "macos_ui_automation.cli:main"
+macos-ui-automation-mcp = "macos_ui_automation.interfaces.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/mb-dev/macos-ui-automation-mcp"
+Repository = "https://github.com/mb-dev/macos-ui-automation-mcp.git"
+Issues = "https://github.com/mb-dev/macos-ui-automation-mcp/issues"
+Documentation = "https://github.com/mb-dev/macos-ui-automation-mcp#readme"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/macos_ui_automation"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict = true
+
+# Ignore PyObjC modules that don't have type stubs
+[[tool.mypy.overrides]]
+module = [
+    "ApplicationServices",
+    "ApplicationServices.*",
+    "Cocoa",
+    "Cocoa.*", 
+    "Quartz",
+    "Quartz.*",
+    "PyObjCCore",
+    "PyObjCCore.*"
+]
+ignore_missing_imports = true
+
+# Less strict typing for bridge modules that interface with PyObjC
+[[tool.mypy.overrides]]
+module = "macos_ui_automation.bridges.real_bridge"
+warn_return_any = false
+disallow_any_unimported = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "PERF", "RUF"]
+ignore = ["S101", "T201", "PLR0913", "PLR0915", "COM812", "ISC001"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-cov>=4.0.0",
+]
+lint = [
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.4.1",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.1.0", 
+    "mypy>=1.0.0",
+]

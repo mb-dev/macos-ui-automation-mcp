@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "quality-check": {
+      "events": ["Stop", "SubagentStop"],
+      "command": "./check-quality.sh",
+      "timeout": 30000
+    }
+  }
+}

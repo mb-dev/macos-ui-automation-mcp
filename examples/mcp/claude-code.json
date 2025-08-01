@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "macos-ui-automation": {
+      "command": "uv", 
+      "args": [
+        "--directory",
+        "/absolute/path/to/macos-ui-automation-mcp",
+        "run",
+        "macos-ui-automation-mcp"
+      ],
+      "env": {
+        "PYTHONPATH": "/absolute/path/to/macos-ui-automation-mcp/src",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}
