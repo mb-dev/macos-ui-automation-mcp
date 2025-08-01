@@ -137,12 +137,16 @@ jobs:
     - name: Set up Python
       run: uv python install 3.12
 
-    - name: Install dependencies
-      run: uv sync --locked --dev
+    - name: Install dependencies (Linux compatible)
+      run: |
+        # Install only Linux-compatible dependencies for security scanning
+        echo "safety>=3.0.0" > requirements-security.txt
+        echo "bandit>=1.7.0" >> requirements-security.txt
+        uv venv
+        uv pip install -r requirements-security.txt
 
     - name: Run security scan
       run: |
-        uv add --dev safety bandit
         uv run safety check --json --output safety-report.json || true
         uv run bandit -r src/ -f json -o bandit-report.json || true
 

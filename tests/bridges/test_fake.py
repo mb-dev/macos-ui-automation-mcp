@@ -53,10 +53,10 @@ class TestFakeAXValue:
         assert "h:50" in str_repr
 
     def test_cf_type_id(self):
-        """Test _cfTypeID mock attribute."""
+        """Test _cf_type_id mock attribute."""
         value = FakeAXValue(AXValueType.CGPOINT.value, {"x": 0, "y": 0})
-        assert hasattr(value, "_cfTypeID")
-        assert value._cfTypeID() == 12345
+        assert hasattr(value, "_cf_type_id")
+        assert value._cf_type_id() == 12345
 
 
 class TestFakeAXUIElement:
@@ -75,10 +75,10 @@ class TestFakeAXUIElement:
         assert "AXPress" in element.actions
 
     def test_cf_type_id(self):
-        """Test _cfTypeID mock attribute."""
+        """Test _cf_type_id mock attribute."""
         element = FakeAXUIElement("test")
-        assert hasattr(element, "_cfTypeID")
-        assert element._cfTypeID() == 54321
+        assert hasattr(element, "_cf_type_id")
+        assert element._cf_type_id() == 54321
 
     def test_hierarchy(self):
         """Test element hierarchy."""

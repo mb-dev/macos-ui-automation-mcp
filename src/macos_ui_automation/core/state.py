@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 from macos_ui_automation.models.types import (
     MenuBarItem,
@@ -165,7 +165,7 @@ class SystemStateDumper:
                 processes.append(process_state)
 
         return SystemState(
-            timestamp=datetime.now(),
+            timestamp=datetime.now(timezone.utc),
             processes=processes,
             accessibility_enabled=True,
             capture_method="accessibility",
@@ -285,7 +285,8 @@ class SystemStateDumper:
     def _dump_ui_elements_with_timeout(
         self, element: Element, start_time: float, timeout_seconds: float
     ) -> list[UIElement]:
-        """Recursively dump UI elements with hierarchical structure and time-based limits."""
+        """Recursively dump UI elements with hierarchical structure and time-based
+        limits."""
         return self._dump_element_hierarchy(element, start_time, timeout_seconds)
 
     def _dump_element_hierarchy(
@@ -328,7 +329,8 @@ class SystemStateDumper:
             enabled = enabled if enabled is not None else False
             focused = focused if focused is not None else False
 
-            # Handle value field - convert complex objects to None since UIElement expects basic types
+            # Handle value field - convert complex objects to None since UIElement
+            # expects basic types
             if hasattr(value, "__class__") and (
                 "Element" in str(type(value))
                 or "Position" in str(type(value))

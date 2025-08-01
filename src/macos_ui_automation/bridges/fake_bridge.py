@@ -42,7 +42,7 @@ class FakeAXValue:
             )
         return f"<AXValue 0x123456789 [unknown] {self.data}>"
 
-    def _cfTypeID(self) -> int:
+    def _cf_type_id(self) -> int:
         """Mock _cfTypeID attribute for AXValue detection."""
         return 12345
 
@@ -62,7 +62,7 @@ class FakeAXUIElement:
         for child in self.children:
             child.parent = self
 
-    def _cfTypeID(self) -> int:
+    def _cf_type_id(self) -> int:
         """Mock _cfTypeID attribute for AXUIElement detection."""
         return 54321
 

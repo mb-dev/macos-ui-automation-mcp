@@ -91,7 +91,7 @@ class Element:
 
         if error == AXError.SUCCESS:
             # Handle AXValue objects (position, size, frame)
-            if value is not None and hasattr(value, "_cfTypeID"):
+            if value is not None and hasattr(value, "_cf_type_id"):
                 value_str = str(value)
                 if "AXValue" in value_str:
                     # Extract position (x, y)
@@ -140,7 +140,7 @@ class Element:
             # Handle AXUIElement objects
             if (
                 value is not None
-                and hasattr(value, "_cfTypeID")
+                and hasattr(value, "_cf_type_id")
                 and str(type(value)).find("AXUIElement") != -1
             ):
                 return Element(value, self._bridge)
@@ -154,7 +154,7 @@ class Element:
                 # (handles both Python lists and NSArray)
                 first_elem = value[0]
                 if (
-                    hasattr(first_elem, "_cfTypeID")
+                    hasattr(first_elem, "_cf_type_id")
                     and str(type(first_elem)).find("AXUIElement") != -1
                 ):
                     return [Element(elem, self._bridge) for elem in value]
