@@ -1,6 +1,6 @@
 [project]
 name = "macos-ui-automation-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server for macOS UI automation with Claude Desktop/Code integration, plus Python library and CLI interfaces"
 authors = [{name = "mochen"}]
 readme = "README.md"
@@ -15,9 +15,12 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: System :: Systems Administration",
-    "Topic :: Desktop Environment :: Window Managers"
+    "Topic :: Desktop Environment :: Window Managers",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Environment :: MacOS X"
 ]
 dependencies = [
     "pydantic>=2.10.0",
@@ -48,7 +51,7 @@ build-backend = "hatchling.build"
 packages = ["src/macos_ui_automation"]
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "0.1.1"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
@@ -76,7 +79,7 @@ disallow_any_unimported = false
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "0.1.1"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "PERF", "RUF"]
