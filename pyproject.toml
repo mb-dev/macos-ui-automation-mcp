@@ -51,7 +51,7 @@ build-backend = "hatchling.build"
 packages = ["src/macos_ui_automation"]
 
 [tool.mypy]
-python_version = "0.1.1"
+python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
@@ -79,7 +79,7 @@ disallow_any_unimported = false
 
 [tool.ruff]
 line-length = 88
-target-version = "0.1.1"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "PERF", "RUF"]
