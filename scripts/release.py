@@ -86,18 +86,36 @@ def create_release(version: str, dry_run: bool = False) -> None:
     # Update version
     update_version(version)
     
+    # Update lockfile after version change
+    print("Updating lockfile...")
+    run_command(["uv", "lock"])
+    
     # Build package to test
     print("Building package...")
     run_command(["uv", "build"])
     
     # Commit version change
     print("Committing version change...")
-    run_command(["git", "add", "pyproject.toml"])
+    run_command(["git", "add", "pyproject.toml", "uv.lock"])
     run_command(["git", "commit", "-m", f"chore: bump version to {version}"])
     
     # Create and push tag
     tag = f"v{version}"
     print(f"Creating tag {tag}...")
+    
+    # Delete existing tag if it exists
+    try:
+        run_command(["git", "tag", "-d", tag])
+        print(f"Deleted existing local tag {tag}")
+    except subprocess.CalledProcessError:
+        pass  # Tag doesn't exist locally
+    
+    try:
+        run_command(["git", "push", "origin", "--delete", tag])
+        print(f"Deleted existing remote tag {tag}")
+    except subprocess.CalledProcessError:
+        pass  # Tag doesn't exist remotely
+    
     run_command(["git", "tag", "-a", tag, "-m", f"Release {version}"])
     run_command(["git", "push", "origin", "main"])
     run_command(["git", "push", "origin", tag])
