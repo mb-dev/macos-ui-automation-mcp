@@ -1,6 +1,6 @@
 [project]
 name = "macos-ui-automation-mcp"
-version = "0.1.0"
+version = "0.1.2"
 description = "MCP server for macOS UI automation with Claude Desktop/Code integration, plus Python library and CLI interfaces"
 authors = [{name = "mochen"}]
 readme = "README.md"
@@ -15,9 +15,12 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: System :: Systems Administration",
-    "Topic :: Desktop Environment :: Window Managers"
+    "Topic :: Desktop Environment :: Window Managers",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Environment :: MacOS X"
 ]
 dependencies = [
     "pydantic>=2.10.0",
