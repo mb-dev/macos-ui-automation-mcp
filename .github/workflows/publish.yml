@@ -55,7 +55,7 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'published'
     needs:
     - build
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment:
       name: pypi
       url: https://pypi.org/p/macos-ui-automation-mcp
@@ -75,7 +75,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && inputs.environment == 'testpypi'
     needs:
     - build
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment:
       name: testpypi
       url: https://test.pypi.org/p/macos-ui-automation-mcp
