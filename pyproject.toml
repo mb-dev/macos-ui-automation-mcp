@@ -1,6 +1,6 @@
 [project]
 name = "macos-ui-automation-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP server for macOS UI automation with Claude Desktop/Code integration, plus Python library and CLI interfaces"
 authors = [{name = "mochen"}]
 readme = "README.md"
